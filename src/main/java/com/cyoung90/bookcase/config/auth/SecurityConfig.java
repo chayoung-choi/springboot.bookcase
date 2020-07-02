@@ -34,14 +34,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                .authorizeRequests()
                .antMatchers("/", "/css/**", "/images/**", "/js/**", "/h2-console/**", "/sample/**").permitAll()
                .antMatchers("/api/v1/**").hasRole(Role.USER.name())
-               .anyRequest().authenticated()
+//               .anyRequest().authenticated()
            .and()
                .logout()
                    .logoutSuccessUrl("/")
            .and()
-               .oauth2Login().loginPage("/login")
-                   .userInfoEndpoint()
-                       .userService(customOAuth2UserService);
+               .oauth2Login()
+               .loginPage("/login")
+//                   .userInfoEndpoint()
+//                       .userService(customOAuth2UserService)
+                       ;
    }
    
 	@Bean
