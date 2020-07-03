@@ -1,0 +1,18 @@
+{{>layout/header}}
+<script>
+	const code = jsQR(imageData, width, height, options);
+	
+	if (code) {
+	  console.log("Found QR code", code);
+	}
+</script>
+<div class="container">
+{{>layout/nav-top}}
+<main class="container-fluid">
+	대여/반납
+	{{>books/scaner}}	
+</main>
+<script src="/js/lib/jsQR.js"></script>
+{{>layout/nav-bottom}}
+</div>
+{{>layout/footer}}
