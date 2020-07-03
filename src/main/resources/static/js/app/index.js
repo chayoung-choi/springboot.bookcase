@@ -1,3 +1,16 @@
+
+// 상단 navbar scroll에 숨김
+var prevScrollpos = window.pageYOffset;
+window.onscroll = function() {
+  var currentScrollPos = window.pageYOffset;
+    if (prevScrollpos > currentScrollPos) {
+      document.getElementById("navbarTop").style.top = "0";
+    } else {
+      document.getElementById("navbarTop").style.top = "-5rem";
+    }
+  prevScrollpos = currentScrollPos;
+}
+
 var main = {
 	init : function() {
 		var _this = this;

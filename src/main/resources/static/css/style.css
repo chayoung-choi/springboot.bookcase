@@ -117,12 +117,28 @@ h1, h2, h3, h4, h5, h6 {
 
 
 /*
+* Nav top
+*/
+#navbarTop {
+  transition: top 0.3s;
+}
+/*
 * Nav bottom
 */
-.nav-bottom {
-  padding: 0.5rem 0;
+#navbarBottom {
   color: #999;
   text-align: center;
   background-color: #f9f9f9;
   border-top: .05rem solid #e5e5e5;
+}
+
+/*
+* Main
+*/
+main {
+  margin: 3rem 0;
+}
+
+#oauthLoginList ul li:not(:first-child) a {
+    max-width : 280px;
 }
