@@ -1,0 +1,35 @@
+<section id="container" class="container">
+<p><button onclick="getStream()">Grab video</button></p>
+<p><video autoplay style="height: 180px; width: 240px;"></video></p>
+<p><button onclick="takePhoto()">Take Photo!</button></p>
+<p><img id="imageTag" width="240" height="180"></p>
+<div id="yourElement" class="container"></div>
+
+</section>
+<script src="/js/libs/quagga.js"></script>
+<script type="text/javascript">
+Quagga.init({
+  inputStream : {
+    name : "Live",
+    type : "LiveStream",
+    target: document.querySelector("#yourElement"),
+    constraints: {
+      width: { min: 640 },
+      height: { min: 480 },
+      aspectRatio: { min: 1, max: 100 },
+      facingMode: 'user',
+    },
+  },
+  singleChannel: false, // true: only the red color-channel is read
+  decoder : {
+    readers : ["code_128_reader"]
+  }
+}, function(err) {
+    if (err) {
+        console.log(err);
+        return
+    }
+    console.log("Initialization finished. Ready to start");
+    Quagga.start();
+});
+</script>
