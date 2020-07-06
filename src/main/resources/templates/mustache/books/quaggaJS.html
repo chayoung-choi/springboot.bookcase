@@ -5,6 +5,7 @@
 <p><img id="imageTag" width="240" height="180"></p>
 <div id="desc"></div>
 <div id="yourElement" class="container" style="height: 180px; width: 240px;"></div>
+<div id="result"></div>
 
 </section>
 <script src="/js/libs/quagga.js"></script>
@@ -19,7 +20,7 @@ Quagga.init({
       height: { max: 160 },
       aspectRatio: { min: 1, max: 100 },
       facingMode: "environment",
-      deviceId: "7832475934759384534"
+      deviceId: "6a579f45ce65cbf6f4d0a4b26550a9bcd72af3609da24b0ebf53e4c5b8201461"
     },
   },
   area: { // defines rectangle of the detection/localization area
@@ -41,6 +42,29 @@ Quagga.init({
     Quagga.start();
 });
 
+if (navigator.mediaDevices && typeof navigator.mediaDevices.getUserMedia === 'function') {
+	  // safely access `navigator.mediaDevices.getUserMedia`
+	  console.log("acses");
+	  navigator.mediaDevices.enumerateDevices()
+	  .then(function(devices) {
+	    devices.forEach(function(device) {
+	      var desc = device.kind + ": " + device.label + " id = " + device.deviceId + "\n\n";
+	  	var full_desc = document.getElementById("desc").innerHTML;
+	  	
+	  	document.getElementById("desc").innerHTML = full_desc + desc;
+	      
+	  	
+	  	//var para = document.createElement("p");
+	  	//var node = document.createTextNode("This is new.");
+	  	//para.appendChild(node);
+	  	console.log(desc);
+	    });
+	  })
+	  .catch(function(err) {
+	    console.log(err.name + ": " + err.message);
+	  });
+}
+	
 if (!navigator.mediaDevices || !navigator.mediaDevices.enumerateDevices) {
 	  console.log("enumerateDevices() not supported.");
 	}
@@ -61,4 +85,13 @@ navigator.mediaDevices.enumerateDevices()
 .catch(function(err) {
   console.log(err.name + ": " + err.message);
 });
+
+
+Quagga.onDetected(onDetected);
+
+function onDetected(result){
+	console.log("result > " + result);
+	document.getElementById("result").innerHTML = result;
+}
 </script>
+
