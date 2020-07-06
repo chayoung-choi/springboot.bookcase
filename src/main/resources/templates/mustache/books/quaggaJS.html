@@ -3,6 +3,7 @@
 <p><video autoplay style="height: 180px; width: 240px;"></video></p>
 <p><button onclick="takePhoto()">Take Photo!</button></p>
 <p><img id="imageTag" width="240" height="180"></p>
+<div id="desc"></div>
 <div id="yourElement" class="container" style="height: 180px; width: 240px;"></div>
 
 </section>
@@ -38,5 +39,26 @@ Quagga.init({
     }
     console.log("Initialization finished. Ready to start");
     Quagga.start();
+});
+
+if (!navigator.mediaDevices || !navigator.mediaDevices.enumerateDevices) {
+	  console.log("enumerateDevices() not supported.");
+	}
+
+// List cameras and microphones.
+
+navigator.mediaDevices.enumerateDevices()
+.then(function(devices) {
+  devices.forEach(function(device) {
+    var desc = device.kind + ": " + device.label + " id = " + device.deviceId + "\n\n";
+	var full_desc = document.getElementById("desc").innerHTML;
+	
+	document.getElementById("desc").innerHTML = full_desc + desc;
+    
+	console.log(desc);
+  });
+})
+.catch(function(err) {
+  console.log(err.name + ": " + err.message);
 });
 </script>
