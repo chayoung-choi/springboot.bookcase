@@ -1,8 +1,4 @@
 <section id="container" class="container">
-<p><button onclick="getStream()">Grab video</button></p>
-<p><video autoplay style="height: 180px; width: 240px;"></video></p>
-<p><button onclick="takePhoto()">Take Photo!</button></p>
-<p><img id="imageTag" width="240" height="180"></p>
 <div id="desc"></div>
 <div id="yourElement" class="container" style="height: 180px; width: 240px;"></div>
 <div id="result"></div>
@@ -16,19 +12,16 @@ Quagga.init({
     type : "LiveStream",
     target: document.querySelector("#yourElement"),
     constraints: {
-      width: { max: 200 },
-      height: { max: 160 },
-      aspectRatio: { min: 1, max: 100 },
+      width: { max: 640 },
+      height: { max: 480 },
+      aspectRatio: { min: 1, max: 2 },
       facingMode: "environment",
       deviceId: "6a579f45ce65cbf6f4d0a4b26550a9bcd72af3609da24b0ebf53e4c5b8201461"
     },
   },
-  area: { // defines rectangle of the detection/localization area
-	    top: "0%",    // top offset
-	    right: "0%",  // right offset
-	    left: "0%",   // left offset
-	    bottom: "0%"  // bottom offset
-	  },
+  numOfWorkers: 2,
+  frequency: 10,
+  locator : {patchSize: 'medium', halfSample: true},
   singleChannel: false, // true: only the red color-channel is read
   decoder : {
     readers : ["code_128_reader"]

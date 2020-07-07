@@ -11,7 +11,7 @@
 	<groupId>com.cyoung90</groupId>
 	<artifactId>bookcase</artifactId>
 	<version>1.0.0</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>bookcase</name>
 	<description>Bookcase project for Spring Boot</description>
 
