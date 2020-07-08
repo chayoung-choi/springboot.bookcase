@@ -86,7 +86,6 @@ var main = {
 
 main.init();
 
-
 function getUserMedia(options, successCallback, failureCallback) {
 	  var api = navigator.getUserMedia || navigator.webkitGetUserMedia ||
 	    navigator.mozGetUserMedia || navigator.msGetUserMedia;

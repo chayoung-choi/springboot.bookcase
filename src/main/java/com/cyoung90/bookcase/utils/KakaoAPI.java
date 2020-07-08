@@ -6,16 +6,19 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 
-@Service
+@RestController
 public class KakaoAPI {
 	private static String KAKAO_APP_KEY = "KakaoAK f8e150f7de34021bb2884d5fac9e3d3f";
+	private static String KAKAO_API_BOOK_URL = "https://dapi.kakao.com/v3/search/book?query=";
 
 	private RestTemplateService<Object> restTemplateService;
 	 
@@ -23,6 +26,19 @@ public class KakaoAPI {
     public void RestTemplateTestService(RestTemplateService<Object> apiService) {
         this.restTemplateService = apiService;
     }
+    
+    @GetMapping("/kakao/books")
+	public ResponseEntity<?> searchBook(@RequestParam("title") String title) {
+    	HttpHeaders headers = new HttpHeaders();
+		headers.set("Authorization", KAKAO_APP_KEY);
+		
+		String url = KAKAO_API_BOOK_URL + title;
+		return ResponseEntity.ok(restTemplateService.get(url, headers, Object.class).getBody());
+	}
+    
+    
+    
+    
     
     public Object callGetBook(String searchText) {
     	HttpHeaders headers = new HttpHeaders();
