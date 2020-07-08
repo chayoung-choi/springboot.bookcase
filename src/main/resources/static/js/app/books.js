@@ -26,13 +26,20 @@ books.init();
 
 function bindSearhBookList(result){
 	var list = result.documents;
-	console.log("list", list);
-	var ul = document.querySelector('.list-unstyled');
+	document.querySelector('.search-book-list').innerHTML = '';
+	var ul = document.querySelector('.search-book-list');
+	var tempLi = document.querySelector('#temp_book_li').content;
 	
 	for (var i=0; i<list.length; i++){
-		var li = ul.querySelector('li').cloneNode(true);
-		console.log(li);
-		li.querySelector('.title').textContent = list.title;
+		var li = tempLi.cloneNode(true);
+		li.querySelector(".img-thumbnail").src = list[i].thumbnail;
+		li.querySelector(".book-title").textContent = list[i].title;
+		li.querySelector(".book-authors").textContent = list[i].authors;
+		li.querySelector(".book-publisher").textContent = list[i].publisher;
+		li.querySelector(".book-publication-date").textContent = list[i].datetime;
+		li.querySelector(".book-contents").textContent = list[i].contents;
+		li.querySelector(".book-price").textContent = list[i].price;
+		li.querySelector(".book-url").href = list[i].url;
 		ul.appendChild(li);
 	}
 }
