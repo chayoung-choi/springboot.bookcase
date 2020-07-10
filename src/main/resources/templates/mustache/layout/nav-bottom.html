@@ -36,13 +36,7 @@
 </div>
 
 <script type="text/javascript">
-
 var navPath = window.location.pathname;
-console.log(navPath);
-/* document.querySelectorAll('.nav-item').forEach(function(li){
-	  li.classList.remove('active');
-	  console.log(li.querySelector('.nav-link').href);
-	}); */
 Array.prototype.forEach.call(document.querySelectorAll('.nav-item'), (el, index) => {
   if (el.querySelector('.nav-link').getAttribute('href') == navPath){
 	  el.classList.add('active');

@@ -135,9 +135,10 @@ h1, h2, h3, h4, h5, h6 {
   text-align: center;
   background-color: #f9f9f9;
   border-top: .05rem solid #e5e5e5;
+  box-shadow: .125rem 0 .25rem rgba(0,0,0,.075)!important;
 }
 .nav-item button {
-  color: rgba(0, 0, 0, 0.5)!important;
+  color: rgba(0, 0, 0, 0.4)!important;
 }
 .nav-item.active button {
   color: black!important;
