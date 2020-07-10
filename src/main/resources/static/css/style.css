@@ -21,6 +21,10 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+.text-black-30 {
+  color: rgba(0, 0, 0, 0.3)!important;
+}
+
 .nav-scroller {
   position: relative;
   z-index: 2;
@@ -121,20 +125,27 @@ h1, h2, h3, h4, h5, h6 {
 
 
 /*
-* Nav top
+* Navbar style
 */
 #navbarTop {
   transition: top 0.3s;
 }
-/*
-* Nav bottom
-*/
 #navbarBottom {
   color: #999;
   text-align: center;
   background-color: #f9f9f9;
   border-top: .05rem solid #e5e5e5;
 }
+.nav-item button {
+  color: rgba(0, 0, 0, 0.5)!important;
+}
+.nav-item.active button {
+  color: black!important;
+}
+.nav-item svg, .nav-item .nav-btn-title {
+  color : inherit; 
+}
+
 
 /*
 * Main
