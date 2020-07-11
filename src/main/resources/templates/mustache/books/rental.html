@@ -1,11 +1,25 @@
-<div class="input-group books-search-area">
-  <input id="search-title" type="text" class="form-control" onkeydown="common.pressEnterWithClickElement('btn_books_search')">
-  <div class="input-group-append">
-    <button id="btn_books_search" class="btn btn-outline-success" type="button" onclick="books.search()">도서 검색</button>
-  </div>
+<div class="shadow-sm mb-3">
+	<div class="card">
+		<div class="card-header p-0 ">
+			<div class="alert-primary text-left p-3 " >
+				<h4 class="px-2 mb-0">
+					<strong>대여</strong>
+				</h4>
+				
+			</div>
+		</div>
+		<div class="card-body bg-light">
+			<div class="input-group books-search-area ">
+				<input id="search-title" type="text" class="form-control" onkeydown="common.pressEnterWithClickElement('btn_books_search')" required>
+			  	<div class="input-group-append">
+			    	<button id="btn_books_search" class="btn btn-outline-success" type="button" onclick="books.search()">도서 검색</button>
+			  	</div>
+			</div>
+			<ul class="list-group search-book-list mt-1">
+			</ul>
+		</div>
+	</div>
 </div>
-<ul class="list-group search-book-list mt-1">
-</ul>
 
 <template id="temp_book_li">
   <li class="list-group-item">

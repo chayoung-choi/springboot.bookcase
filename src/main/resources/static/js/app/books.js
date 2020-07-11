@@ -1,17 +1,18 @@
 var books = {
 	init : function() {
 		var _this = this;
-		// $('#btn-books-search').on('click', function() {
-		// _this.search();
-		// });
 	},
 	search : function() {
+		var val = $("#search-title").val();
+		if (val.trim() == ""){
+			return;
+		}
 		$.ajax({
 			type : 'GET',
 			url : '/kakao/books',
 			dataType : 'text',
 			data : {
-				title : $("#search-title").val()
+				title : val 
 			}
 		}).done(function(result) {
 			console.log(result);
