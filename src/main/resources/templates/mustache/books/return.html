@@ -15,6 +15,28 @@
 		</div>
 		<div class="card-body bg-light collapse multi-collapse" id="collapseReturn">
 			<ul class="list-group return-book-list mt-1">
+				{{#rental}}
+				  <li class="list-group-item">
+				  	<div class="d-flex">
+					  <div class="book-img">
+					    <img class="img-thumbnail" src="{{thumbnail}}" alt="...">
+					  </div>
+					  <div class="flex-fill px-3">
+					  	<h3 class="book-title">{{title}}</h3>
+					  	<div class="book-authors">{{authors}}</div>
+					  	<div class="book-publisher">{{publisher}}</div>
+					  	<small class="text-muted"><span class="book-publication-date">{{datetime}}</span> 출간</small><br>
+					  	<small class="text-muted"><span class="book-price">{{price}}</span>원</small>
+					  </div>
+					</div>
+					<div class="book-contents"></div>
+				    <div class="d-lg-inline-flex">
+				      <a href="#" class="btn btn-info book-url" role="button" aria-pressed="true" target="_blank">상세</a>
+				      <button type="button" class="btn btn-warning alert-warning">연장</button>
+				      <button type="button" class="btn btn-primary">반납</button>
+				    </div>
+				  </li>
+				{{/rental}}
 			  <li class="list-group-item">
 			  	<div class="d-flex">
 				  <div class="book-img">

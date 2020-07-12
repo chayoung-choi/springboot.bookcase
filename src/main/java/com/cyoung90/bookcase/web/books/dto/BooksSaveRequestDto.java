@@ -25,17 +25,18 @@ public class BooksSaveRequestDto {
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
 	private LocalDateTime datetime;
 	private String isbn;
-	private Number price;
+	
+	private Long price;
 	private String publisher;
-	private Number sale_price;
-	private String status;
+
+	private Long sale_price;
 	private String thumbnail;
 	private String url;
 	private String create_user;
 
 	@Builder
 	public BooksSaveRequestDto(String bookcase_id, String title, String[] authors, String contents,
-			LocalDateTime datetime, String isbn, Number price, String publisher, Number sale_price, String status,
+			LocalDateTime datetime, String isbn, Long price, String publisher, Long sale_price,
 			String thumbnail, String url, String create_user) {
 		this.bookcase_id = bookcase_id;
 		this.title = title;
@@ -46,7 +47,6 @@ public class BooksSaveRequestDto {
 		this.price = price;
 		this.publisher = publisher;
 		this.sale_price = sale_price;
-		this.status = status;
 		this.thumbnail = thumbnail;
 		this.url = url;
 		this.create_user = create_user;
@@ -54,7 +54,7 @@ public class BooksSaveRequestDto {
 
 	public Books toEntity() {
 		return Books.builder().bookcase_id(bookcase_id).title(title).authors(authors).contents(contents)
-				.datetime(datetime).isbn(isbn).price(price).publisher(publisher).sale_price(sale_price).status(status)
+				.datetime(datetime).isbn(isbn).price(price).publisher(publisher).sale_price(sale_price)
 				.thumbnail(thumbnail).url(url).create_user(create_user).build();
 	}
 
@@ -62,7 +62,7 @@ public class BooksSaveRequestDto {
 	public String toString() {
 		return "BooksSaveRequestDto [bookcase_id=" + bookcase_id + ", title=" + title + ", authors=" + authors
 				+ ", contents=" + contents + ", datetime=" + datetime + ", isbn=" + isbn + ", price=" + price
-				+ ", publisher=" + publisher + ", sale_price=" + sale_price + ", status=" + status + ", thumbnail="
+				+ ", publisher=" + publisher + ", sale_price=" + sale_price + ", thumbnail="
 				+ thumbnail + ", url=" + url + ", create_user=" + create_user + "]";
 	}
 
