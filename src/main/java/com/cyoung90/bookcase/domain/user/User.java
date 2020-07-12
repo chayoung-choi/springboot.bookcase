@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
-@Entity(name = "TB1_USER")
+@Entity(name = "TB2_USER")
 @SequenceGenerator(name = "SEQ_TB1_USER_GENERATOR", sequenceName = "SEQ_TB1_USER", initialValue = 1, allocationSize = 1)
 public class User extends BaseTimeEntity {
 
