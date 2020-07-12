@@ -1,3 +1,4 @@
+var searchBookList;
 var books = {
 	init : function() {
 		var _this = this;
@@ -15,10 +16,29 @@ var books = {
 				title : val 
 			}
 		}).done(function(result) {
-			console.log(result);
-			bindSearhBookList(JSON.parse(result));
+			bindSearhBookList(result);
 		}).fail(function(error) {
-			alert(JSON.stringify(error));
+			alert("도서 검색에 실패하였습니다.");
+			console.log(JSON.stringify(error));
+		})
+	},
+	rental : function() {
+		var idx = event.target.closest('li').dataset.idx;
+		var book = searchBookList[idx];
+		console.log(book);
+//		console.log(JSON.stringify(book));
+//		return;
+		$.ajax({
+			type : 'POST',
+			url : '/api/v1/book/rental',
+			dataType : 'json',
+			contentType : 'application/json; charset=utf-8',
+			data : JSON.stringify(book)
+		}).done(function(result) {
+			alert("대여되었습니다.");
+		}).fail(function(error) {
+			alert("도서 대여에 실패하였습니다.");
+			console.log(JSON.stringify(error));
 		})
 	}
 };
@@ -26,13 +46,15 @@ var books = {
 books.init();
 
 function bindSearhBookList(result){
-	var list = result.documents;
+	var list = JSON.parse(result).documents;
+	searchBookList = list;
 	document.querySelector('.search-book-list').innerHTML = '';
 	var ul = document.querySelector('.search-book-list');
 	var tempLi = document.querySelector('#temp_book_li').content;
 	
 	for (var i=0; i<list.length; i++){
 		var li = tempLi.cloneNode(true);
+		li.querySelector(".list-group-item").dataset.idx = i;
 		li.querySelector(".img-thumbnail").src = list[i].thumbnail;
 		li.querySelector(".book-title").textContent = list[i].title;
 		li.querySelector(".book-authors").textContent = list[i].authors;

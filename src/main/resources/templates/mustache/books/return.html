@@ -1,13 +1,16 @@
 <div class="shadow-sm mb-3">
 	<div class="card">
 		<div class="card-header p-0 ">
-			<button class="btn btn-light alert-danger btn-block text-left p-3 d-flex justify-content-between align-items-center"
+			<button class="btn btn-light bg-white btn-block text-left p-3 d-flex justify-content-between align-items-center"
 				type="button" data-toggle="collapse" data-target="#collapseReturn"
-				aria-expanded="false" aria-controls="collapseReturn">
+				aria-expanded="false" aria-controls="collapseReturn" onclick="common.toggleChevronIcon()">
 				<h4 class="px-2 mb-0">
 					<strong>반납</strong>
 				</h4>
-				<span class="badge badge-danger badge-pill">1</span>
+				<span class="icon-chevron">
+					<i class="fas fa-chevron-down"></i>
+				</span>
+				<!-- <span class="badge badge-danger badge-pill">1</span> -->
 			</button>
 		</div>
 		<div class="card-body bg-light collapse multi-collapse" id="collapseReturn">

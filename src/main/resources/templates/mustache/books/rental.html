@@ -1,8 +1,8 @@
-<div class="shadow-sm mb-3">
+<div id="box-rental" class="shadow-sm mb-3">
 	<div class="card">
-		<div class="card-header p-0 ">
-			<div class="alert-primary text-left p-3 " >
-				<h4 class="px-2 mb-0">
+		<div class="card-header p-0 bg-white">
+			<div class="text-left p-3">
+				<h4 class="px-2 mb-0" style="color:#212529;">
 					<strong>대여</strong>
 				</h4>
 				
@@ -10,9 +10,10 @@
 		</div>
 		<div class="card-body bg-light">
 			<div class="input-group books-search-area ">
-				<input id="search-title" type="text" class="form-control" onkeydown="common.pressEnterWithClickElement('btn_books_search')" required>
+				<input id="search-title" type="text" class="form-control" onkeydown="common.pressEnterWithClickElement('btn_books_search')" 
+					placeholder="도서명을 입력해주세요." required>
 			  	<div class="input-group-append">
-			    	<button id="btn_books_search" class="btn btn-outline-success" type="button" onclick="books.search()">도서 검색</button>
+			    	<button id="btn_books_search" class="btn btn-dark" type="button" onclick="books.search()">도서 검색</button>
 			  	</div>
 			</div>
 			<ul class="list-group search-book-list mt-1">
@@ -22,7 +23,7 @@
 </div>
 
 <template id="temp_book_li">
-  <li class="list-group-item">
+  <li class="list-group-item" data-idx="">
   	<div class="d-flex">
 	  <div class="book-img">
 	    <img class="img-thumbnail" src="" alt="...">
@@ -38,7 +39,7 @@
 	<div class="book-contents"></div>
     <div class="d-lg-inline-flex">
       <a href="#" class="btn btn-info book-url" role="button" aria-pressed="true" target="_blank">상세</a>
-      <button type="button" class="btn btn-primary">대여</button>
+      <button type="button" class="btn btn-primary" onclick="books.rental()">대여</button>
     </div>
   </li>
 </template>
