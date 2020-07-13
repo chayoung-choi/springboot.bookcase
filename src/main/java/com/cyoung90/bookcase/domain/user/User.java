@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import com.cyoung90.bookcase.domain.BaseTimeEntity;
 
 import lombok.Builder;
@@ -18,12 +20,12 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 @Entity(name = "TB2_USER")
-@SequenceGenerator(name = "SEQ_TB1_USER_GENERATOR", sequenceName = "SEQ_TB1_USER", initialValue = 1, allocationSize = 1)
 public class User extends BaseTimeEntity {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_TB1_USER_GENERATOR")
-	private Long id;
+	@GeneratedValue(generator = "uuid2")
+	@GenericGenerator(name = "uuid2", strategy = "uuid2")
+	private String id;
 
 	@Column(nullable = false)
 	private String name;
@@ -49,7 +51,6 @@ public class User extends BaseTimeEntity {
 	public User update(String name, String picture) {
 		this.name = name;
 		this.picture = picture;
-
 		return this;
 	}
 

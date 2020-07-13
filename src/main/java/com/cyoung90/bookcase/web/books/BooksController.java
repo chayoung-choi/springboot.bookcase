@@ -21,6 +21,8 @@ public class BooksController {
 	
 	@GetMapping("/books/management")
 	public String booksManagement(Model model, @LoginUser SessionUser user) {
+		
+		model.addAttribute("user", user);
 		model.addAttribute("rental", booksService.findAllDesc());
 		return "books/management";
 	}

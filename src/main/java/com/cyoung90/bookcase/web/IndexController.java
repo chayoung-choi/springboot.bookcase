@@ -1,6 +1,5 @@
 package com.cyoung90.bookcase.web;
 
-import org.apache.catalina.connector.Response;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import com.cyoung90.bookcase.config.auth.LoginUser;
 import com.cyoung90.bookcase.config.auth.dto.SessionUser;
 import com.cyoung90.bookcase.service.posts.PostService;
-import com.cyoung90.bookcase.utils.KakaoAPI;
 import com.cyoung90.bookcase.web.dto.PostsResponseDto;
 
 import lombok.RequiredArgsConstructor;
@@ -26,12 +24,7 @@ public class IndexController {
 
 	@GetMapping("/")
 	public String index(Model model, @LoginUser SessionUser user) {
-//		model.addAttribute("posts", postService.findAllDesc());
-
-		if (user != null) {
-			model.addAttribute("userName", user.getName());
-		}
-		
+		model.addAttribute("user", user);
 		return "index";
 	}
 	
