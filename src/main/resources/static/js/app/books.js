@@ -26,20 +26,20 @@ var books = {
 		var idx = event.target.closest('li').dataset.idx;
 		var book = searchBookList[idx];
 		console.log(book);
-//		console.log(JSON.stringify(book));
-//		return;
 		$.ajax({
 			type : 'POST',
 			url : '/api/v1/book/rental',
 			dataType : 'json',
 			contentType : 'application/json; charset=utf-8',
-			data : JSON.stringify(book)
-		}).done(function(result) {
-			alert("대여되었습니다.");
-		}).fail(function(error) {
-			alert("도서 대여에 실패하였습니다.");
-			console.log(JSON.stringify(error));
-		})
+			data : JSON.stringify(book),
+			success : function(data){
+				alert("대여되었습니다.");
+			}, 
+			error : function(error){
+				alert("도서 대여에 실패하였습니다.");
+				console.log(JSON.stringify(error));
+			}
+		});
 	}
 };
 

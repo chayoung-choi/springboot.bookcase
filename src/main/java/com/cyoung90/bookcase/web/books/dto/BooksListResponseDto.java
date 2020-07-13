@@ -11,7 +11,6 @@ import lombok.Getter;
 public class BooksListResponseDto {
 	private String bookcase_id;
 	private String title;
-	private String[] authors;
 	private String contents;
 	
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
@@ -29,7 +28,6 @@ public class BooksListResponseDto {
    public BooksListResponseDto(Books entity) {
 	   this.bookcase_id = entity.getBookcase_id();
 	   this.title = entity.getTitle();
-	   this.authors = entity.getAuthors();
 	   this.contents = entity.getContents();
 	   this.datetime = entity.getDatetime();
 	   this.isbn = entity.getIsbn();

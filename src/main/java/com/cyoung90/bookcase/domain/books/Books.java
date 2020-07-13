@@ -8,6 +8,8 @@ import javax.persistence.Id;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import com.cyoung90.bookcase.config.auth.LoginUser;
+import com.cyoung90.bookcase.config.auth.dto.SessionUser;
 import com.cyoung90.bookcase.domain.BaseTimeEntity;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -25,7 +27,6 @@ public class Books extends BaseTimeEntity {
 	private String id;
 	private String bookcase_id;
 	private String title;
-	private String[] authors;
 	private String contents;
 	
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
@@ -41,13 +42,12 @@ public class Books extends BaseTimeEntity {
 	private String updated_user;
 	
 	@Builder
-	public Books(String id, String bookcase_id, String title, String[] authors, String contents, LocalDateTime datetime,
+	public Books(String id, String bookcase_id, String title, String contents, LocalDateTime datetime,
 			String isbn, Long price, String publisher, Long sale_price, String thumbnail, String url,
 			String create_user, String updated_user) {
 		this.id = id;
 		this.bookcase_id = bookcase_id;
 		this.title = title;
-		this.authors = authors;
 		this.contents = contents;
 		this.datetime = datetime;
 		this.isbn = isbn;
