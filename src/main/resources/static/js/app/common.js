@@ -7,6 +7,7 @@ var common = {
 	// fa-chevron-up/down 아이콘 toggle
 	toggleChevronIcon : function() {
 		var target = event.target.querySelector('.icon-chevron i');
+		console.log(target);
 		if (target.classList.contains('fa-chevron-down')) {
 			target.classList.remove('fa-chevron-down');
 			target.classList.add('fa-chevron-up');

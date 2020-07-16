@@ -16,7 +16,10 @@ var books = {
 				title : val 
 			}
 		}).done(function(result) {
-			bindSearhBookList(result);
+			var data = new Object();
+			data.list = JSON.parse(result).documents;
+			console.log(data);
+			renderSearchBookList(data);
 		}).fail(function(error) {
 			alert("도서 검색에 실패하였습니다.");
 			console.log(JSON.stringify(error));
@@ -32,37 +35,24 @@ var books = {
 			dataType : 'json',
 			contentType : 'application/json; charset=utf-8',
 			data : JSON.stringify(book),
-			success : function(data){
-				alert("대여되었습니다.");
-			}, 
 			error : function(error){
 				alert("도서 대여에 실패하였습니다.");
-				console.log(JSON.stringify(error));
-			}
+				console.log(error);
+			},
+			success : function(response){
+				alert("대여되었습니다.");
+			} 
 		});
 	}
 };
 
 books.init();
 
-function bindSearhBookList(result){
-	var list = JSON.parse(result).documents;
-	searchBookList = list;
-	document.querySelector('.search-book-list').innerHTML = '';
-	var ul = document.querySelector('.search-book-list');
-	var tempLi = document.querySelector('#temp_book_li').content;
-	
-	for (var i=0; i<list.length; i++){
-		var li = tempLi.cloneNode(true);
-		li.querySelector(".list-group-item").dataset.idx = i;
-		li.querySelector(".img-thumbnail").src = list[i].thumbnail;
-		li.querySelector(".book-title").textContent = list[i].title;
-		li.querySelector(".book-authors").textContent = list[i].authors;
-		li.querySelector(".book-publisher").textContent = list[i].publisher;
-		li.querySelector(".book-publication-date").textContent = list[i].datetime;
-		li.querySelector(".book-contents").textContent = list[i].contents;
-		li.querySelector(".book-price").textContent = list[i].price;
-		li.querySelector(".book-url").href = list[i].url;
-		ul.appendChild(li);
-	}
+function renderSearchBookList(data){
+	fetch('/templates/books-template.html')
+	.then((response) => response.text())
+	.then((template) => {
+		var rendered = Mustache.render($(template).filter('#books_search_result_template').html(), data);
+		document.getElementById('books_search_result').innerHTML = rendered;    
+    });
 }

@@ -1,3 +1,6 @@
+<style>
+	.hide { display:none; }
+</style>
 <div id="box-rental" class="shadow-sm mb-3">
 	<div class="card">
 		<div class="card-header p-0 bg-white">
@@ -16,30 +19,9 @@
 			    	<button id="btn_books_search" class="btn btn-dark" type="button" onclick="books.search()">도서 검색</button>
 			  	</div>
 			</div>
-			<ul class="list-group search-book-list mt-1">
-			</ul>
+			<div id="books_search_result">
+			</div>
 		</div>
 	</div>
 </div>
 
-<template id="temp_book_li">
-  <li class="list-group-item" data-idx="">
-  	<div class="d-flex">
-	  <div class="book-img">
-	    <img class="img-thumbnail" src="" alt="...">
-	  </div>
-	  <div class="flex-fill px-3">
-	  	<h3 class="book-title"></h3>
-	  	<div class="book-authors"></div>
-	  	<div class="book-publisher"></div>
-	  	<small class="text-muted"><span class="book-publication-date"></span> 출간</small><br>
-	  	<small class="text-muted"><span class="book-price"></span>원</small>
-	  </div>
-	</div>
-	<div class="book-contents"></div>
-    <div class="d-lg-inline-flex">
-      <a href="#" class="btn btn-info book-url" role="button" aria-pressed="true" target="_blank">상세</a>
-      <button type="button" class="btn btn-primary" onclick="books.rental()">대여</button>
-    </div>
-  </li>
-</template>

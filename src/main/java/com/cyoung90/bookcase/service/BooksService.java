@@ -6,8 +6,6 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.cyoung90.bookcase.config.auth.LoginUser;
-import com.cyoung90.bookcase.config.auth.dto.SessionUser;
 import com.cyoung90.bookcase.domain.books.BooksRepository;
 import com.cyoung90.bookcase.web.books.dto.BooksListResponseDto;
 import com.cyoung90.bookcase.web.books.dto.BooksSaveRequestDto;
