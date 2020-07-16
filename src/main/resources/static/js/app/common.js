@@ -1,5 +1,6 @@
 var common = {
-	pressEnterWithClickElement : function(btnId) {
+	// input Enter시 buttn 동시 클릭 트리거 
+	triggerForClickElement : function(btnId) {
 		if (event.keyCode == '13') {
 			$("#" + btnId).click();
 		}
@@ -15,5 +16,9 @@ var common = {
 			target.classList.remove('fa-chevron-up');
 			target.classList.add('fa-chevron-down');
 		}
-	}
+	},
+	// 숫자 세자리씩 포맷 
+	numberCommaFormat : (n) => {
+		return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	} 
 };

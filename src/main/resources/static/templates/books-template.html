@@ -1,7 +1,7 @@
 <script id="books_search_result_template" type="text/x-tmpl-mustache">
 <ul id="books_search_ul" class="list-group search-book-list mt-1">
-{{#list}}
-  <li class="list-group-item" data-idx="">
+{{#.}}
+  <li class="list-group-item" data-idx="{{index}}">
   	<div class="d-flex">
 	  <div class="book-img">
 	    <img class="img-thumbnail" src="{{thumbnail}}" alt="...">
@@ -10,8 +10,8 @@
 	  	<h3 class="book-title">{{title}}</h3>
 		<div class="book-authors">{{authors}}</div>
 		<div class="book-publisher">{{publisher}}</div>
-	  	<small class="text-muted"><span class="book-publication-date">{{datetime}}</span> 출간</small><br>
-	  	<small class="text-muted"><span class="book-price">{{price}}</span>원</small>
+	  	<small class="text-muted"><span class="book-publication-date">{{datetimeFormat}}</span> 출간</small><br>
+	  	<small class="text-muted"><span class="book-price">정가 {{priceFormat}}</span>원</small>
 	  </div>
 	</div>
 	<div class="book-contents"></div>
@@ -20,6 +20,6 @@
       <button type="button" class="btn btn-primary" onclick="books.rental()">대여</button>
     </div>
   </li>
-{{/list}}
+{{/.}}
 </ul>
 </script>

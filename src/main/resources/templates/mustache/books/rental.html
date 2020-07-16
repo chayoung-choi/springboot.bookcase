@@ -1,6 +1,3 @@
-<style>
-	.hide { display:none; }
-</style>
 <div id="box-rental" class="shadow-sm mb-3">
 	<div class="card">
 		<div class="card-header p-0 bg-white">
@@ -13,7 +10,7 @@
 		</div>
 		<div class="card-body bg-light">
 			<div class="input-group books-search-area ">
-				<input id="search-title" type="text" class="form-control" onkeydown="common.pressEnterWithClickElement('btn_books_search')" 
+				<input id="search-title" type="text" class="form-control" onkeydown="common.triggerForClickElement('btn_books_search')" 
 					placeholder="도서명을 입력해주세요." required>
 			  	<div class="input-group-append">
 			    	<button id="btn_books_search" class="btn btn-dark" type="button" onclick="books.search()">도서 검색</button>
@@ -24,4 +21,3 @@
 		</div>
 	</div>
 </div>
-
