@@ -15,11 +15,14 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
+@Setter
 @NoArgsConstructor
 public class BooksSaveRequestDto extends BaseTimeEntity {
-	private String bookcase_id;
+	
+	private String bookcase_id = "1000";
 	private String title;
 	private String contents;
 	
@@ -32,17 +35,17 @@ public class BooksSaveRequestDto extends BaseTimeEntity {
 	
 	private Long price;
 	private String publisher;
-
-	private Long sale_price;
 	private String thumbnail;
 	private String url;
+	private String use_yn = "Y";
+	
 	private String create_user;
+	private String updated_user;
 	
 
 	@Builder
 	public BooksSaveRequestDto(String bookcase_id, String title, String contents, List<String> authors,
-			LocalDateTime datetime, String isbn, Long price, String publisher, Long sale_price,
-			String thumbnail, String url, String create_user, @LoginUser SessionUser user) {
+			LocalDateTime datetime, String isbn, Long price, String publisher, String thumbnail, String url) {
 		this.bookcase_id = bookcase_id;
 		this.title = title;
 		this.authors = authors;
@@ -51,24 +54,14 @@ public class BooksSaveRequestDto extends BaseTimeEntity {
 		this.isbn = isbn;
 		this.price = price;
 		this.publisher = publisher;
-		this.sale_price = sale_price;
 		this.thumbnail = thumbnail;
 		this.url = url;
-		this.create_user = user.getEmail();
 	}
 
 	public Books toEntity() {
 		return Books.builder().bookcase_id(bookcase_id).title(title).authors(authors).contents(contents)
-				.datetime(datetime).isbn(isbn).price(price).publisher(publisher).sale_price(sale_price)
-				.thumbnail(thumbnail).url(url).create_user(create_user).build();
-	}
-
-	@Override
-	public String toString() {
-		return "BooksSaveRequestDto [bookcase_id=" + bookcase_id + ", title=" + title
-				+ ", contents=" + contents + ", datetime=" + datetime + ", isbn=" + isbn + ", price=" + price
-				+ ", publisher=" + publisher + ", sale_price=" + sale_price + ", thumbnail="
-				+ thumbnail + ", url=" + url + ", create_user=" + create_user + "]";
+				.datetime(datetime).isbn(isbn).price(price).publisher(publisher).thumbnail(thumbnail).url(url).use_yn(use_yn)
+				.create_user(create_user).updated_user(updated_user).build();
 	}
 
 }

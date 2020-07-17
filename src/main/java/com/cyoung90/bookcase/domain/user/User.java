@@ -25,7 +25,7 @@ public class User extends BaseTimeEntity {
 	@Id
 	@GeneratedValue(generator = "uuid2")
 	@GenericGenerator(name = "uuid2", strategy = "uuid2")
-	private String id;
+	private String user_id;
 
 	@Column(nullable = false)
 	private String name;

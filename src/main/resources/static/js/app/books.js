@@ -16,6 +16,7 @@ var books = {
 				title : val 
 			}
 		}).done(function(result) {
+			console.log(JSON.parse(result));
 			renderSearchBookList(JSON.parse(result).documents);
 		}).fail(function(error) {
 			alert("도서 검색에 실패하였습니다.");

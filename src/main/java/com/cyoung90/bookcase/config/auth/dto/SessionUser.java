@@ -13,14 +13,14 @@ public class SessionUser implements Serializable {
 	/**
 	 * system 발급 User 고유 id
 	 */
-	private String id; 
+	private String user_id; 
 	private String name;
 	private String email;
 	private String picture;
 	private Role role;
 
 	public SessionUser(User user) {
-		this.id = user.getId();
+		this.user_id = user.getUser_id();
 		this.name = user.getName();
 		this.email = user.getEmail();
 		this.picture = user.getPicture();

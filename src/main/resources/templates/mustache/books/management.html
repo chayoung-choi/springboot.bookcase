@@ -1,9 +1,12 @@
 {{>layout/header}}
 <div class="">
-{{>layout/nav-top}}
-<main class="container">
-	{{>books/return}}	
-	{{>books/rental}}		
+<main class="container-fluid include-nav-header include-nav-bottom">
+	<div class="container-lg">
+		{{>books/return}}	
+	</div>
+	<div class="container-lg">
+		{{>books/rental}}		
+	</div>
 </main>
 {{>layout/nav-bottom}}
 </div>

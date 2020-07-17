@@ -3,6 +3,7 @@ package com.cyoung90.bookcase.domain.books;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,7 +26,7 @@ public class Books extends BaseTimeEntity {
 	@Id
 	@GeneratedValue(generator = "uuid2")
 	@GenericGenerator(name = "uuid2", strategy = "uuid2")
-	private String id;
+	private String book_id;
 	private String bookcase_id;
 	private String title;
 	
@@ -39,17 +40,18 @@ public class Books extends BaseTimeEntity {
 	
 	private Long price;
 	private String publisher;
-	private Long sale_price;
 	private String thumbnail;
 	private String url;
+	
+	private String use_yn;
 	private String create_user;
 	private String updated_user;
 	
 	@Builder
-	public Books(String id, String bookcase_id, String title, List<String> authors, String contents, LocalDateTime datetime,
-			String isbn, Long price, String publisher, Long sale_price, String thumbnail, String url,
+	public Books(String book_id, String bookcase_id, String title, List<String> authors, String contents, LocalDateTime datetime,
+			String isbn, Long price, String publisher, String thumbnail, String url, String use_yn,
 			String create_user, String updated_user) {
-		this.id = id;
+		this.book_id = book_id;
 		this.bookcase_id = bookcase_id;
 		this.title = title;
 		this.authors = authors;
@@ -58,9 +60,9 @@ public class Books extends BaseTimeEntity {
 		this.isbn = isbn;
 		this.price = price;
 		this.publisher = publisher;
-		this.sale_price = sale_price;
 		this.thumbnail = thumbnail;
 		this.url = url;
+		this.use_yn = use_yn;
 		this.create_user = create_user;
 		this.updated_user = updated_user;
 	}

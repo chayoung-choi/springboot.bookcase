@@ -46,9 +46,9 @@ public class PostsApiController {
 		return id;
 	}
 
-	@GetMapping("/testCall/{text}")
-	public ResponseEntity<?> searchBook(@PathVariable("text") String searchText) {
-		return ResponseEntity.ok(kakaoAPI.callGetBook(searchText));
-	}
+//	@GetMapping("/testCall/{text}")
+//	public ResponseEntity<?> searchBook(@PathVariable("text") String searchText) {
+//		return ResponseEntity.ok(kakaoAPI.callGetBook(searchText));
+//	}
 
 }

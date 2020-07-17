@@ -27,4 +27,9 @@ public class BooksController {
 		return "books/management";
 	}
 	
+	@GetMapping("/books/book-save")
+	public String bookSave(Model model, @LoginUser SessionUser user) {
+		return "bookcase/book-save";
+	}
+	
 }

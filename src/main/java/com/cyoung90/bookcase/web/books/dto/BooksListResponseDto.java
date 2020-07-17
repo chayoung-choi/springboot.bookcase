@@ -13,6 +13,7 @@ import lombok.Getter;
 
 @Getter
 public class BooksListResponseDto {
+	private String book_id;
 	private String bookcase_id;
 	private String title;
 	private String contents;
@@ -27,12 +28,12 @@ public class BooksListResponseDto {
 	private Long price;
 	private String publisher;
 
-	private Long sale_price;
 	private String thumbnail;
 	private String url;
 	private String create_user;
 
    public BooksListResponseDto(Books entity) {
+	   this.book_id = entity.getBook_id();
 	   this.bookcase_id = entity.getBookcase_id();
 	   this.title = entity.getTitle();
 	   this.contents = entity.getContents();
@@ -41,7 +42,6 @@ public class BooksListResponseDto {
 	   this.isbn = entity.getIsbn();
 	   this.price = entity.getPrice();
 	   this.publisher = entity.getPublisher();
-	   this.sale_price = entity.getSale_price();
 	   this.thumbnail = entity.getThumbnail();
 	   this.url = entity.getUrl();
 	   this.create_user = entity.getCreate_user();
