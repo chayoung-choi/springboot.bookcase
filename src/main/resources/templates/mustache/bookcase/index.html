@@ -1,9 +1,17 @@
-{{>layout/header}}{{>layout/bookcase-nav-top}}
+{{>layout/header}}
+{{>layout/bookcase-nav-top}}
 <main class="container-fluid include-nav-header include-nav-bottom">
-	<div class="container">
-		{{>bookcase/book}}
-		{{>bookcase/bookcase}}
+	<div class="swiper-container bg-light" style="">
+		<div class="swiper-wrapper">
+			<div class="swiper-slide bg-info">
+				{{>bookcase/book}}
+			</div>
+			<div class="swiper-slide">
+				{{>bookcase/bookcase}}
+			</div>
+		</div>
 	</div>
 </main>
 {{>layout/nav-bottom}}
 {{>layout/footer}}
+<script src="/js/app/bookcase.js"></script>

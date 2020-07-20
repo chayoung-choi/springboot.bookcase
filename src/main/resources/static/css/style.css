@@ -153,6 +153,7 @@ body {
 .nav-header a.active {
   color: #000040!important;
   border-bottom: 3px #000040 solid; 
+  transition: .3s;
 }
 .nav-header a:not(.active) {
   color: #adb5bd!important;
@@ -183,4 +184,24 @@ main.include-nav-bottom {
 
 #oauthLoginList ul li:not(:first-child) a {
     max-width : 280px;
+}
+
+.swiper-slide {
+	/* Center slide text vertically */
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	-webkit-align-items: center;
+	align-items: center;
+}
+.swiper-container {
+	width: 100%;
+	min-height: 75vh;
 }
