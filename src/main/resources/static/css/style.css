@@ -20,6 +20,19 @@ body {
     font-size: 3rem;
   }
 }
+
+/* white button */
+.btn-white {
+    background-color: #FFF;
+    color: #333;
+    border-radius: 4px;
+}
+.btn-white:hover,
+.btn-white:focus,
+.btn-white:active {
+    background-color: #e2e6ea!important;
+    color: #333;
+}
     
 .text-black-30 {
   color: rgba(0, 0, 0, 0.3)!important;
@@ -135,7 +148,14 @@ body {
   text-align: center;
   background-color: #f9f9f9;
   border-top: .05rem solid #e5e5e5;
-  box-shadow: .125rem 0 .25rem rgba(0,0,0,.075)!important;
+  box-shadow: 0 -.125rem .25rem rgba(0,0,0,.075)!important;
+}
+.nav-header a.active {
+  color: #000040!important;
+  border-bottom: 3px #000040 solid; 
+}
+.nav-header a:not(.active) {
+  color: #adb5bd!important;
 }
 .nav-item button {
   color: rgba(0, 0, 0, 0.4)!important;

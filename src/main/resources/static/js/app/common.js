@@ -1,9 +1,23 @@
 var common = {
+	init : function() {
+		var _this = this;
+		console.log("common init");
+	},
 	// input Enter시 buttn 동시 클릭 트리거 
 	triggerForClickElement : function(btnId) {
 		if (event.keyCode == '13') {
 			$("#" + btnId).click();
 		}
+	},
+	// layout nav tab click event toggle
+	toggleNavTab : function(parentName, targetName){
+		var target = event.target;
+		if (target.closest(targetName) == null){
+			return;
+		}
+		var navbar = target.closest(parentName);
+		navbar.querySelector(targetName + '.active').classList.remove('active');
+		target.closest(targetName).classList.add('active');
 	},
 	// fa-chevron-up/down 아이콘 toggle
 	toggleChevronIcon : function() {
@@ -22,3 +36,5 @@ var common = {
 		return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 	} 
 };
+
+common.init();
