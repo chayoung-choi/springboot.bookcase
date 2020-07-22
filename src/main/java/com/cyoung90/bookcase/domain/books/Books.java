@@ -31,6 +31,7 @@ public class Books extends BaseTimeEntity {
 	private String title;
 	
 	@Convert(converter = StringListConverter.class)
+	@Column(name = "authors")
 	private List<String> authors;
 	private String contents;
 	

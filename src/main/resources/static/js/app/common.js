@@ -37,9 +37,6 @@ var tab = {
 		if (target.closest('.nav-item') == null){
 			return;
 		}
-		
-//		var prevTabIndex = event.currentTarget.querySelector('.nav-link.active').tabIndex;
-		
 		tab.toggleActiveTab(target);
 		tab.slideSwiper(target);
 	},
@@ -48,16 +45,48 @@ var tab = {
 		nav.querySelector('.nav-link.active').classList.remove('active');
 		target.closest('.nav-link').classList.add('active');
 	},
-	setLocation : () => {
-		
-	},
 	slideSwiper : (target) => {
 		var mySwiper = document.querySelector('.swiper-container').swiper;
 		if (mySwiper == null){ return; }
 		var tabIndex = target.closest('.nav-link').tabIndex - 1;
 		mySwiper.slideTo(tabIndex);
+	},
+}
+
+
+var swiper = {
+	init : () => {
+		
+		if (document.querySelector('.swiper-container') == null){
+			return;
+		}
+		
+		var initHash = location.hash;
+		var tabIndex = 0;
+		
+		if (initHash != ""){
+			var target = document.querySelector('.nav-link[href="'+ initHash +'"]');
+			tabIndex = target.tabIndex - 1;
+			tab.toggleActiveTab(target);
+		}
+		
+		var swiper = new Swiper('.swiper-container', {
+		    speed: 400,
+		    spaceBetween: 100,
+		    initialSlide: tabIndex,
+		    autoHeight: true,
+		});
+		
+		swiper.on('slideChange', function () {
+		  var tabIndex = swiper.activeIndex + 1;
+		  var target = document.querySelector('.nav-link[tabindex="'+ tabIndex +'"]');
+		  target.click();
+		});
 	}
 }
 
 common.init();
-tab.init();
+
+$(document).ready(function () {
+	swiper.init();
+});

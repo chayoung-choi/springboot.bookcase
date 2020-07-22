@@ -1,0 +1,27 @@
+{{>layout/header}}
+<ul class="nav nav-header border-bottom shadow-sm px-2 pt-2 fixed-top bg-white" onclick="tab.moveNavTab()">
+  <li class="nav-item">
+    <a class="nav-link active" href="#rental" tabindex="1">
+    	<strong>대여</strong>
+    </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#return" tabindex="2">
+    	<strong>반납</strong>
+    </a>
+  </li>
+</ul>
+<main class="container-fluid include-nav-header include-nav-bottom">
+	<div class="swiper-container">
+		<div class="swiper-wrapper">
+			<div class="swiper-slide" data-page="1">
+				{{>books/rental}}
+			</div>
+			<div class="swiper-slide" data-page="2">
+				{{>books/return}}
+			</div>
+		</div>
+	</div>
+</main>
+{{>layout/nav-bottom}}
+{{>layout/footer}}

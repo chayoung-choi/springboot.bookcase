@@ -3,10 +3,8 @@
 /* Padding below the footer and lighter body text */
 
 body {
-  /* padding-top: 3rem;
-  padding-bottom: 3rem; */
   color: #5a5a5a;
-  font-family: 'Nanum Gothic', sans-serif;
+  /* font-family: 'Nanum Gothic', sans-serif; */
 }
 
 /* h1, h2, h3, h4, h5, h6 {
@@ -36,32 +34,6 @@ body {
     
 .text-black-30 {
   color: rgba(0, 0, 0, 0.3)!important;
-}
-
-.nav-scroller {
-  position: relative;
-  z-index: 2;
-  height: 2.75rem;
-  overflow-y: hidden;
-}
-
-.nav-scroller .nav {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
-  padding-bottom: 1rem;
-  margin-top: -1px;
-  overflow-x: auto;
-  text-align: center;
-  white-space: nowrap;
-  -webkit-overflow-scrolling: touch;
-}
-
-.nav-scroller .nav-link {
-  padding-top: .75rem;
-  padding-bottom: .75rem;
-  font-size: .875rem;
 }
 
 .card-img-right {
@@ -153,9 +125,11 @@ body {
 .nav-header a.active {
   color: #000040!important;
   border-bottom: 3px #000040 solid; 
-  transition: .3s;
 }
-.nav-header a:not(.active) {
+.nav-header .nav-single {
+  color: #000040!important;
+}
+.nav-header a:not(.active):not(.nav-single) {
   color: #adb5bd!important;
 }
 .nav-item button {
@@ -166,6 +140,32 @@ body {
 }
 .nav-item svg, .nav-item .nav-btn-title {
   color : inherit; 
+}
+.nav-link {
+  outline : none; 
+}
+.nav-scroller {
+  position: relative;
+  z-index: 2;
+  height: 2.75rem;
+  overflow-y: hidden;
+}
+.nav-scroller .nav {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  padding-bottom: 1rem;
+  margin-top: -1px;
+  overflow-x: auto;
+  text-align: center;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+}
+.nav-scroller .nav-link {
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+  font-size: .875rem;
 }
 
 

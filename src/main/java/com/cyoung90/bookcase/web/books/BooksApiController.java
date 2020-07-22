@@ -23,15 +23,15 @@ public class BooksApiController {
 	
 	@PostMapping("/api/v1/book/save")
 	public String save(@RequestBody BooksSaveRequestDto requestDto, @LoginUser SessionUser user) {
-		requestDto.setCreate_user(user.getUser_id());
-		requestDto.setUpdated_user(user.getUser_id());
+		requestDto.setCreate_user(user.getUserId());
+		requestDto.setUpdated_user(user.getUserId());
 		return booksService.save(requestDto);
 	}
 	
 	@PostMapping("/api/v1/book/rental")
 	public String rental(@RequestBody BooksSaveRequestDto requestDto, @LoginUser SessionUser user) {
-		requestDto.setCreate_user(user.getUser_id());
-		requestDto.setUpdated_user(user.getUser_id());
+		requestDto.setCreate_user(user.getUserId());
+		requestDto.setUpdated_user(user.getUserId());
 		return booksService.rental(requestDto);
 	}
 }

@@ -20,7 +20,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class BooksSaveRequestDto extends BaseTimeEntity {
+public class BooksSaveRequestDto {
 	
 	private String bookcase_id = "1000";
 	private String title;

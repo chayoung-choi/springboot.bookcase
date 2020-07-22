@@ -17,14 +17,15 @@ import lombok.RequiredArgsConstructor;
 public class BooksController {
 	
 	private final Log log = LogFactory.getLog(this.getClass());
+	
 	private final BooksService booksService;
 	
-	@GetMapping("/books/management")
+	@GetMapping("/books")
 	public String booksManagement(Model model, @LoginUser SessionUser user) {
 		
 		model.addAttribute("user", user);
 		model.addAttribute("rental", booksService.findAllDesc());
-		return "books/management";
+		return "books/index";
 	}
 	
 	@GetMapping("/books/book-save")
