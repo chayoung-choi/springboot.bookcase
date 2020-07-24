@@ -1,6 +1,21 @@
 var bookcase = {
 	init : function() {
 		var _this = this;
+		var current_hash = location.hash;
+		var current_index = 0;
+		var list = document.querySelectorAll(".nav-link[tabindex]");
+		Array.prototype.forEach.call(list, function (item) {
+		  if (item.hash == current_hash){
+			  current_index = item.tabIndex;
+		  }
+		});
+		
+		document.querySelectorAll(".navbar-button > [data-tab-index='2']").forEach(function(el){
+			el.style.display = block;
+			document.querySelector("form.navbar-button").style.display= block;
+			console.log(el);
+		
+		});
 	},
 	saveBookcase : () => {
 		
