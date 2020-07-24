@@ -22,7 +22,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
    public void configure(WebSecurity web) throws Exception
    {
        // static 디렉터리의 하위 파일 목록은 인증 무시 ( = 항상통과 )
-       web.ignoring().antMatchers("/css/**", "/js/**", "/img/**", "/lib/**", "/api/v1/**");
+       web.ignoring().antMatchers("/css/**", "/js/**", "/images/**");
    }
    
    @Override
@@ -32,18 +32,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
            .headers().frameOptions().disable() 
            .and()
                .authorizeRequests()
-               .antMatchers("/", "/css/**", "/images/**", "/js/**", "/h2-console/**", "/sample/**").permitAll()
+               .antMatchers("/", "/login", "/sample/**").permitAll()
                .antMatchers("/api/v1/**").hasRole(Role.USER.name())
-//               .anyRequest().authenticated()
+               .anyRequest().authenticated()
            .and()
                .logout()
                    .logoutSuccessUrl("/")
            .and()
                .oauth2Login()
                .loginPage("/login")
-//                   .userInfoEndpoint()
-//                       .userService(customOAuth2UserService)
-                       ;
+                   .userInfoEndpoint()	// OAuth 2 로그인 성공 이후 사용자 정보를 가져올 때의 설정들을 담당
+                       .userService(customOAuth2UserService);	// 소셜 로그인 성공 시 후속 조치를 진행할 UserService 인터페이스의 구현체를 등록합니다.
    }
    
 	@Bean
