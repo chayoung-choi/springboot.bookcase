@@ -3,7 +3,7 @@ var books = {
 	init : function() {
 		var _this = this;
 	},
-	search : function() {
+	kakaoSearch : function() {
 		var val = $("#search-title").val();
 		if (val.trim() == ""){
 			return;
@@ -59,6 +59,6 @@ function renderSearchBookList(data){
 		
 		console.log(searchBookList);
 		var rendered = Mustache.render($(template).filter('#books_search_result_template').html(), data);
-		document.getElementById('books_search_result').innerHTML = rendered;    
+		document.getElementById('search-result').innerHTML = rendered;    
     });
 }

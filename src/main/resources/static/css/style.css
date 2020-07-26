@@ -168,7 +168,10 @@ body {
   font-size: .875rem;
 }
 
-
+.input-group-prepend > .btn-addon-outline-gray {
+  border: 1px solid #ced4da;
+  border-right: none;
+} 
 /*
 * Main
 */
