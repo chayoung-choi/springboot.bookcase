@@ -10,4 +10,6 @@ public interface BookcaseRepository extends JpaRepository<Bookcase, String> {
 	List<Bookcase> findAllDesc();
 	
 	List<Bookcase> findAllByUserId(String userId);
+	
+	Bookcase findByUserIdAndBookcaseId(String userId, String bookcaseId);
 }

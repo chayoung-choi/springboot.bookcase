@@ -6,8 +6,10 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.cyoung90.bookcase.domain.bookcase.Bookcase;
 import com.cyoung90.bookcase.domain.bookcase.BookcaseRepository;
 import com.cyoung90.bookcase.web.bookcase.dto.BookcaseListResponseDto;
+import com.cyoung90.bookcase.web.bookcase.dto.BookcaseResponseDto;
 import com.cyoung90.bookcase.web.bookcase.dto.BookcaseSaveRequestDto;
 
 import lombok.RequiredArgsConstructor;
@@ -36,6 +38,17 @@ public class BookcaseService {
 	@Transactional(readOnly = true) // 조회 기능일 때 조회속도 개선
 	public List<BookcaseListResponseDto> findAllByUserId(String userId) {
 		return bookcaseRepository.findAllByUserId(userId).stream().map(BookcaseListResponseDto::new).collect(Collectors.toList());
+	}
+	
+	@Transactional(readOnly = true) // 조회 기능일 때 조회속도 개선
+	public BookcaseResponseDto findByUserIdAndBookcaseId(String userId, String bookcaseId) {
+		Bookcase entity = new Bookcase(); 
+		try {
+			entity = bookcaseRepository.findByUserIdAndBookcaseId(userId, bookcaseId);
+		} catch (Exception e) {
+			new IllegalArgumentException("책장 정보가 없습니다.");
+		}
+		return new BookcaseResponseDto(entity);
 	}
 	
 //	@Transactional(readOnly = true) // 조회 기능일 때 조회속도 개선

@@ -40,4 +40,11 @@ public class Bookcase extends BaseTimeEntity {
 		this.createUser = createUser;
 		this.updatedUser = updatedUser;
 	}
+
+	@Override
+	public String toString() {
+		return "Bookcase [bookcaseId=" + bookcaseId + ", name=" + name + ", picture=" + picture + ", userId=" + userId
+				+ ", authenticationKey=" + authenticationKey + ", useYn=" + useYn + ", createUser=" + createUser
+				+ ", updatedUser=" + updatedUser + "]";
+	}
 }

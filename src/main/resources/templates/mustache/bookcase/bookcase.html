@@ -10,7 +10,7 @@
 <div class="row row-cols-2 row-cols-md-4">
 {{#bookcase}}
 	<div class="col mb-3">
-		<div class="card h-100">
+		<div class="card h-100" data-bookcase-id="{{bookcaseId}}">
 		  <div class="card-header">
 		  	{{name}}
 		  	<p class="small">[{{bookcaseId}}]</p>
@@ -21,6 +21,9 @@
 				<div class="col">picture</div>
 				<div class="col">{{picture}}</div>
 			</div>
+		  </div>
+		  <div class="card-footer">
+		  	<a class="btn btn-outline-info btn-block" href="/bookcase/book/register/{{bookcaseId}}" role="button">책 추가하기</a>
 		  </div>
 		</div>
 	</div>

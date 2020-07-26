@@ -3,6 +3,7 @@ package com.cyoung90.bookcase.web.bookcase;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.cyoung90.bookcase.config.auth.LoginUser;
 import com.cyoung90.bookcase.config.auth.dto.SessionUser;
@@ -25,9 +26,13 @@ public class BookcaseController {
 	}
 
 	@GetMapping("/bookcase/bookcase-save")
-	public String bookcaseSave(Model model, @LoginUser SessionUser user) {
-		
-		model.addAttribute("user", user);
+	public String bookcaseSave(Model model) {
 		return "bookcase/bookcase-save";
+	}
+	
+	@GetMapping("/bookcase/book/register/{bookcaseId}")
+	public String bookRegister(Model model, @PathVariable String bookcaseId, @LoginUser SessionUser user) {
+		bookcaseService.findByUserIdAndBookcaseId(user.getUserId(), bookcaseId);
+		return "bookcase/book-register";
 	}
 }
