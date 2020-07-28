@@ -1,5 +1,5 @@
-<script id="books_search_result_template" type="text/x-tmpl-mustache">
-<ul id="books_search_ul" class="list-group search-book-list mt-1">
+<script id="books-search-result-template2" type="text/x-tmpl-mustache">
+<ul id="books-search-ul" class="list-group search-book-list mt-1">
 {{#.}}
   <li class="list-group-item" data-idx="{{index}}">
   	<div class="d-flex">
@@ -22,4 +22,66 @@
   </li>
 {{/.}}
 </ul>
+</script>
+
+<script id="books-search-result-template3" type="text/x-tmpl-mustache">
+<ul id="books-search-ul" class="list-group list-group-flush search-book-list mt-1">
+{{#.}}
+  <li class="list-group-item" data-idx="{{index}}">
+	<div class="container">
+	  <div class="row">
+		<div class="col-5 col-md-2 book-img p-0">
+			<img class="img-thumbnail" src="{{thumbnail}}" alt="...">
+		</div>
+		<div class="col-7 col-md-10">
+		  	<h4 class="book-title">{{title}}</h4>
+			<div class="book-authors font-weight-bold">{{authors}}</div>
+			<div class="book-publisher text-secondary">{{publisher}}</div>
+<div class="btn-group" role="group" aria-label="Basic example">
+  <button type="button" class="btn btn-secondary">Left</button>
+  <button type="button" class="btn btn-secondary">Right</button>
+</div>
+		</div>
+	  </div>
+	</div>
+	<div class="row">
+	  <div class="col">
+	  <a href="{{url}}" class="btn btn-info book-url" role="button" aria-pressed="true" target="_blank">상세</a>
+	  </div>
+	  <div class="col">
+	  <button type="button" class="btn btn-primary" onclick="books.rental()">대여</button>
+	  </div>
+	</div>
+  </li>
+{{/.}}
+</ul>
+</script>
+
+<script id="books-search-result-template" type="text/x-tmpl-mustache">
+<div class="row row-cols-1 row-cols-md-2">
+{{#.}}
+
+  <div class="col mb-4">
+<div class="card h-100" data-idx="{{index}}">
+  <div class="row no-gutters h-100">
+    <div class="col-5 col-md-2 p-1">
+      <img src="{{thumbnail}}" class="card-img img-thumbnail" alt="...">
+    </div>
+    <div class="col-7 col-md-10">
+      <div class="card-body p-2">
+        <h5 class="card-title book-title">{{title}}</h5>
+		<div class="book-authors">{{authors}}</div>
+        <p class="card-text book-publisher"><small class="text-muted">{{publisher}}</small></p>
+      </div>
+    </div>
+  </div>
+	<div class="card-footer">
+  <button type="button" class="btn btn-secondary">Left</button>
+  <button type="button" class="btn btn-secondary">Right</button>
+    </div>
+</div>
+</div>
+
+{{/.}}
+</div>
 </script>

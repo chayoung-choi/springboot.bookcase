@@ -58,7 +58,7 @@ function renderSearchBookList(data){
 		});
 		
 		console.log(searchBookList);
-		var rendered = Mustache.render($(template).filter('#books_search_result_template').html(), data);
-		document.getElementById('search-result').innerHTML = rendered;    
+		var rendered = Mustache.render($(template).filter('#books-search-result-template').html(), data);
+		document.getElementById('books-search-result').innerHTML = rendered;    
     });
 }
