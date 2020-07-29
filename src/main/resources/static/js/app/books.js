@@ -23,6 +23,25 @@ var books = {
 			console.log(JSON.stringify(error));
 		})
 	},
+	register : function(){
+		var idx = event.target.closest('.card').dataset.idx;
+		var bookcaseId = document.getElementById("bookcase-id").value;
+		var book = searchBookList[idx];
+		book.bookcase_id = bookcaseId;
+		
+		$.ajax({
+			type : 'POST',
+			url : '/api/v1/book/register',
+			data : JSON.stringify(book),
+			contentType : 'application/json; charset=utf-8',
+			dataType : 'text'
+		}).done(function() {
+			alert("등록되었습니다.");
+		}).fail(function(error) {
+			alert("죄송합니다. 등록에 실패하였습니다.");
+			console.log(JSON.stringify(error));
+		});
+	},
 	rental : function() {
 		var idx = event.target.closest('li').dataset.idx;
 		var book = searchBookList[idx];

@@ -22,7 +22,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class BooksSaveRequestDto {
 	
-	private String bookcase_id = "1000";
+	private String bookcaseId;
 	private String title;
 	private String contents;
 	
@@ -37,16 +37,15 @@ public class BooksSaveRequestDto {
 	private String publisher;
 	private String thumbnail;
 	private String url;
-	private String use_yn = "Y";
+	private String useYn = "Y";
 	
-	private String create_user;
-	private String updated_user;
+	private String sessionId;
 	
 
 	@Builder
 	public BooksSaveRequestDto(String bookcase_id, String title, String contents, List<String> authors,
 			LocalDateTime datetime, String isbn, Long price, String publisher, String thumbnail, String url) {
-		this.bookcase_id = bookcase_id;
+		this.bookcaseId = bookcase_id;
 		this.title = title;
 		this.authors = authors;
 		this.contents = contents;
@@ -59,9 +58,13 @@ public class BooksSaveRequestDto {
 	}
 
 	public Books toEntity() {
-		return Books.builder().bookcase_id(bookcase_id).title(title).authors(authors).contents(contents)
-				.datetime(datetime).isbn(isbn).price(price).publisher(publisher).thumbnail(thumbnail).url(url).use_yn(use_yn)
-				.create_user(create_user).updated_user(updated_user).build();
+		return Books.builder().bookcaseId(bookcaseId).title(title).authors(authors).contents(contents)
+				.datetime(datetime).isbn(isbn).price(price).publisher(publisher).thumbnail(thumbnail).url(url).useYn(useYn)
+				.createUser(sessionId).updatedUser(sessionId).build();
+	}
+	
+	public void setSessionId(String sessionId) {
+		this.sessionId = sessionId;
 	}
 
 }

@@ -1,5 +1,7 @@
 package com.cyoung90.bookcase.web.bookcase;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.cyoung90.bookcase.config.auth.LoginUser;
 import com.cyoung90.bookcase.config.auth.dto.SessionUser;
+import com.cyoung90.bookcase.domain.user.Role;
 import com.cyoung90.bookcase.service.BookcaseService;
 
 import lombok.RequiredArgsConstructor;
@@ -14,6 +17,8 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @Controller
 public class BookcaseController {
+	
+	private final Log log = LogFactory.getLog(this.getClass());
 	
 	private final BookcaseService bookcaseService;
 	
@@ -33,6 +38,8 @@ public class BookcaseController {
 	@GetMapping("/bookcase/book/register/{bookcaseId}")
 	public String bookRegister(Model model, @PathVariable String bookcaseId, @LoginUser SessionUser user) {
 		bookcaseService.findByUserIdAndBookcaseId(user.getUserId(), bookcaseId);
+		model.addAttribute("bookcaseId", bookcaseId);
+		log.info(Role.USER.name());
 		return "bookcase/book-register";
 	}
 }

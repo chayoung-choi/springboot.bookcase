@@ -1,5 +1,5 @@
 {{>layout/header}}
-<nav class="navbar navbar-expand-lg navbar-light border-bottom p-3">
+<nav class="navbar bg-white border-bottom p-3 fixed-top shadow-sm">
 	<div class="input-group books-search-area container">
 		<div class="input-group-prepend">
 			<a class="btn btn-addon-outline-gray" href="javascript:history.back();">
@@ -21,8 +21,9 @@
 	  	</div>
 	</div>
 </nav>
-<div id="books-search-result" class="container mt-3">
-</div>
+<input type="hidden" id="bookcase-id" name="bookcase_id" value="{{bookcaseId}}"/>
+<main id="books-search-result" class="container include-nav-header mt-3">
+</main>
 {{>layout/footer}}
 <script src="/js/app/bookcase.js"></script>
 <script src="/js/app/books.js"></script>

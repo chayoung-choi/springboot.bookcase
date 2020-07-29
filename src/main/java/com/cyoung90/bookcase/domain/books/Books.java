@@ -26,8 +26,8 @@ public class Books extends BaseTimeEntity {
 	@Id
 	@GeneratedValue(generator = "uuid2")
 	@GenericGenerator(name = "uuid2", strategy = "uuid2")
-	private String book_id;
-	private String bookcase_id;
+	private String bookId;
+	private String bookcaseId;
 	private String title;
 	
 	@Convert(converter = StringListConverter.class)
@@ -44,16 +44,16 @@ public class Books extends BaseTimeEntity {
 	private String thumbnail;
 	private String url;
 	
-	private String use_yn;
-	private String create_user;
-	private String updated_user;
+	private String useYn;
+	private String createUser;
+	private String updatedUser;
 	
 	@Builder
-	public Books(String book_id, String bookcase_id, String title, List<String> authors, String contents, LocalDateTime datetime,
-			String isbn, Long price, String publisher, String thumbnail, String url, String use_yn,
-			String create_user, String updated_user) {
-		this.book_id = book_id;
-		this.bookcase_id = bookcase_id;
+	public Books(String bookId, String bookcaseId, String title, List<String> authors, String contents,
+			LocalDateTime datetime, String isbn, Long price, String publisher, String thumbnail, String url,
+			String useYn, String createUser, String updatedUser) {
+		this.bookId = bookId;
+		this.bookcaseId = bookcaseId;
 		this.title = title;
 		this.authors = authors;
 		this.contents = contents;
@@ -63,9 +63,8 @@ public class Books extends BaseTimeEntity {
 		this.publisher = publisher;
 		this.thumbnail = thumbnail;
 		this.url = url;
-		this.use_yn = use_yn;
-		this.create_user = create_user;
-		this.updated_user = updated_user;
+		this.useYn = useYn;
+		this.createUser = createUser;
+		this.updatedUser = updatedUser;
 	}
-	
 }
