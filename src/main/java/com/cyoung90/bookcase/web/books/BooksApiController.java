@@ -36,7 +36,6 @@ public class BooksApiController {
 	
 	@PostMapping("/api/v1/book/register")
 	public String register(@RequestBody BooksSaveRequestDto requestDto, @LoginUser SessionUser user) {
-		log.info(requestDto.toString());
 		requestDto.setSessionId(user.getUserId());
 		return booksService.rental(requestDto);
 	}

@@ -22,7 +22,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class BooksSaveRequestDto {
 	
-	private String bookcaseId;
+	private String bookcase_id;
 	private String title;
 	private String contents;
 	
@@ -45,7 +45,7 @@ public class BooksSaveRequestDto {
 	@Builder
 	public BooksSaveRequestDto(String bookcase_id, String title, String contents, List<String> authors,
 			LocalDateTime datetime, String isbn, Long price, String publisher, String thumbnail, String url) {
-		this.bookcaseId = bookcase_id;
+		this.bookcase_id = bookcase_id;
 		this.title = title;
 		this.authors = authors;
 		this.contents = contents;
@@ -58,7 +58,7 @@ public class BooksSaveRequestDto {
 	}
 
 	public Books toEntity() {
-		return Books.builder().bookcaseId(bookcaseId).title(title).authors(authors).contents(contents)
+		return Books.builder().bookcaseId(bookcase_id).title(title).authors(authors).contents(contents)
 				.datetime(datetime).isbn(isbn).price(price).publisher(publisher).thumbnail(thumbnail).url(url).useYn(useYn)
 				.createUser(sessionId).updatedUser(sessionId).build();
 	}

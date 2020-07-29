@@ -40,6 +40,8 @@ public class BookcaseController {
 		bookcaseService.findByUserIdAndBookcaseId(user.getUserId(), bookcaseId);
 		model.addAttribute("bookcaseId", bookcaseId);
 		log.info(Role.USER.name());
+		log.info(user.getRole().name());
+		log.info(user.getRole().getTitle());
 		return "bookcase/book-register";
 	}
 }

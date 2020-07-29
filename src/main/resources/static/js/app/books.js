@@ -23,6 +23,7 @@ var books = {
 			console.log(JSON.stringify(error));
 		})
 	},
+	
 	register : function(){
 		var idx = event.target.closest('.card').dataset.idx;
 		var bookcaseId = document.getElementById("bookcase-id").value;
@@ -42,6 +43,7 @@ var books = {
 			console.log(JSON.stringify(error));
 		});
 	},
+	
 	rental : function() {
 		var idx = event.target.closest('li').dataset.idx;
 		var book = searchBookList[idx];
