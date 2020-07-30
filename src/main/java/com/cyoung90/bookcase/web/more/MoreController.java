@@ -6,6 +6,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.cyoung90.bookcase.config.auth.LoginUser;
+import com.cyoung90.bookcase.config.auth.dto.SessionUser;
+
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
@@ -15,8 +18,8 @@ public class MoreController {
 	private final Log log = LogFactory.getLog(this.getClass());
 	
 	@GetMapping("/more")
-	public String booksManagement(Model model) {
-		
+	public String more(Model model, @LoginUser SessionUser user) {
+		model.addAttribute("user", user);
 		return "more/index";
 	}
 	

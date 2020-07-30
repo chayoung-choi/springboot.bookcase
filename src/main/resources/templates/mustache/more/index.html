@@ -8,7 +8,20 @@
 </ul>
 <main class="container-fluid include-nav-header include-nav-bottom">
 	<div class="container">
-		<div class="row row-cols-4">
+		<div class="row">
+			<div class="col  p-3" style="max-width:100px;">
+				<img class="rounded-circle" alt="profile" src="{{user.picture}}" style="max-width: 80%;">
+			</div>
+			<div class="col row">
+				<div class="col-12">
+				<p class="mb-1">{{user.name}}</p>
+				</div>
+				<div class="col-12">
+				<p class="mb-1">{{user.email}}</p>
+				</div>
+			</div>
+		</div>
+		<div class="row row-cols-4 border">
 			<div class="col py-3 px-0">
 				<a class="btn btn-white row mx-auto" href="/books/book-save" role="button">
 					<svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-search col" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
