@@ -9,6 +9,10 @@ var bookcase = {
 			picture : $("#picture").val()
 		};
 		
+		if (data.name.trim() == "" || data.picture.trim() == ""){
+			return false;
+		}
+		
 		$.ajax({
 			type : 'POST',
 			data : JSON.stringify(data),

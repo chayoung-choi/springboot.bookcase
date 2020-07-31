@@ -17,15 +17,19 @@ public class SessionUser implements Serializable {
 	 */
 	private String userId; 
 	private String name;
+	private String nickname;
 	private String email;
 	private String picture;
+	private String admin;
 	private Role role;
 
 	public SessionUser(User user) {
 		this.userId = user.getUserId();
 		this.name = user.getName();
+		this.nickname = user.getNickname();
 		this.email = user.getEmail();
 		this.picture = user.getPicture();
 		this.role = user.getRole();
+		this.admin = ("ADMIN".equals(user.getRole().name()) ? "ADMIN새봄" : null);
 	}
 }
