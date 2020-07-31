@@ -1,7 +1,9 @@
 {{#user}}
-	<a type="button" class="btn btn-dark btn-sm" href="/logout" role="button" style="font-size: small;">
+	<div class="dropdown">
+	  <button class="btn btn-white p-1" type="button" id="btnDropdownAvatar" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+	  		style="max-width: 50px;">
 		{{#user.picture}}
-			<img class="rounded-circle" alt="profile" src="{{user.picture}}" style="max-width: 45px;">
+			<img class="rounded-circle border w-100" alt="profile" src="{{user.picture}}">
 		{{/user.picture}}
 		{{^user.picture}}
 			<svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-person-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -10,8 +12,12 @@
 			  <path fill-rule="evenodd" d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z"/>
 			</svg>
 		{{/user.picture}}
-		<span id="user">{{user.name}}</span>
-	</a>
+	  </button>
+	  <div class="dropdown-menu shadow-sm" aria-labelledby="dropdownMenuButton">
+	    <a class="dropdown-item" href="/more">설정</a>
+	    <a class="dropdown-item" href="/logout">로그아웃</a>
+	  </div>
+	</div>
 {{/user}}
 {{^user}}
 	<a class="btn btn-sm btn-outline-secondary" href="/login" style="font-size: 0.775rem;">로그인</a>

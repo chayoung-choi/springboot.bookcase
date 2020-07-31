@@ -1,27 +1,25 @@
 {{>layout/header}}
-<ul class="nav nav-header border-bottom shadow-sm px-2 pt-2 fixed-top bg-white" onclick="tab.moveNavTab()">
-  <li class="nav-item">
-    <a class="nav-link nav-single" href="#" tabindex="1">
-    	<strong>더보기</strong>
-    </a>
-  </li>
-</ul>
+<nav class="navbar fixed-top bg-white border-bottom shadow-sm px-2 py-0">
+	<ul class="nav nav-header py-2" onclick="tab.moveNavTab()">
+	  <li class="nav-item">
+	    <a class="nav-link nav-single" href="#" tabindex="1">
+	    	<strong>더보기</strong>
+	    </a>
+	  </li>
+	</ul>
+</nav>
 <main class="container-fluid include-nav-header include-nav-bottom">
 	<div class="container">
 		<div class="row">
-			<div class="col  p-3" style="max-width:100px;">
-				<img class="rounded-circle" alt="profile" src="{{user.picture}}" style="max-width: 80%;">
+			<div class="col p-3 text-center" style="max-width:110px;">
+				<img class="rounded-circle border" alt="profile" src="{{user.picture}}" style="max-width: 80%;">
 			</div>
-			<div class="col row">
-				<div class="col-12">
-				<p class="mb-1">{{user.name}}</p>
-				</div>
-				<div class="col-12">
-				<p class="mb-1">{{user.email}}</p>
-				</div>
+			<div class="col pl-0 pl-md-3 my-auto text-break">
+				<h5 class="mb-0">{{user.name}}</h5>
+				<span class="font-weight-light text-muted">{{user.email}}</span>
 			</div>
 		</div>
-		<div class="row row-cols-4 border">
+		<div class="row row-cols-4 row-cols-md-6 border">
 			<div class="col py-3 px-0">
 				<a class="btn btn-white row mx-auto" href="/books/book-save" role="button">
 					<svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-search col" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
