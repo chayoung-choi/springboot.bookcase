@@ -11,5 +11,7 @@ public interface BookcaseRepository extends JpaRepository<Bookcase, String> {
 	
 	List<Bookcase> findAllByUserId(String userId);
 	
+	Bookcase findByUserId(String userId);
+	
 	Bookcase findByUserIdAndBookcaseId(String userId, String bookcaseId);
 }

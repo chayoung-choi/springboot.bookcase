@@ -8,8 +8,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cyoung90.bookcase.config.auth.LoginUser;
 import com.cyoung90.bookcase.config.auth.dto.SessionUser;
-import com.cyoung90.bookcase.domain.user.Role;
+import com.cyoung90.bookcase.service.BookcaseService;
 import com.cyoung90.bookcase.service.BooksService;
+import com.cyoung90.bookcase.web.bookcase.dto.BookcaseResponseDto;
 import com.cyoung90.bookcase.web.books.dto.BooksSaveRequestDto;
 
 import lombok.RequiredArgsConstructor;
@@ -21,6 +22,8 @@ public class BooksApiController {
 	private final Log log = LogFactory.getLog(this.getClass());
 	
 	private final BooksService booksService;
+	
+	private final BookcaseService bookcaseService;
 	
 	@PostMapping("/api/v1/book/save")
 	public String save(@RequestBody BooksSaveRequestDto requestDto, @LoginUser SessionUser user) {
@@ -36,6 +39,8 @@ public class BooksApiController {
 	
 	@PostMapping("/api/v1/book/register")
 	public String register(@RequestBody BooksSaveRequestDto requestDto, @LoginUser SessionUser user) {
+		BookcaseResponseDto bookcaseResponseDto = bookcaseService.findByUserId(user.getUserId());
+		requestDto.setBookcase_id(bookcaseResponseDto.getBookcaseId());
 		requestDto.setSessionId(user.getUserId());
 		return booksService.rental(requestDto);
 	}

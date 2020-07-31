@@ -26,9 +26,7 @@ var books = {
 	
 	register : function(){
 		var idx = event.target.closest('.card').dataset.idx;
-		var bookcaseId = document.getElementById("bookcase-id").value;
 		var book = searchBookList[idx];
-		book.bookcase_id = bookcaseId;
 		
 		$.ajax({
 			type : 'POST',

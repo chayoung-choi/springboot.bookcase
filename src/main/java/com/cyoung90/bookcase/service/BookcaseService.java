@@ -41,6 +41,17 @@ public class BookcaseService {
 	}
 	
 	@Transactional(readOnly = true) // 조회 기능일 때 조회속도 개선
+	public BookcaseResponseDto findByUserId(String userId) {
+		Bookcase entity = new Bookcase(); 
+		try {
+			entity = bookcaseRepository.findByUserId(userId);
+		} catch (Exception e) {
+			new IllegalArgumentException("책장 정보가 없습니다.");
+		}
+		return new BookcaseResponseDto(entity);
+	}
+	
+	@Transactional(readOnly = true) // 조회 기능일 때 조회속도 개선
 	public BookcaseResponseDto findByUserIdAndBookcaseId(String userId, String bookcaseId) {
 		Bookcase entity = new Bookcase(); 
 		try {
