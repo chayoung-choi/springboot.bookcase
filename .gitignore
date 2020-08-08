@@ -35,3 +35,4 @@ build/
 /mvnw.cmd
 /bin/
 /README.md
+/log.config.path_IS_UNDEFINED/

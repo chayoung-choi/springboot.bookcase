@@ -9,8 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.cyoung90.bookcase.config.auth.LoginUser;
 import com.cyoung90.bookcase.config.auth.dto.SessionUser;
-import com.cyoung90.bookcase.service.posts.PostService;
-import com.cyoung90.bookcase.web.dto.PostsResponseDto;
+import com.cyoung90.bookcase.service.BooksService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -20,10 +19,11 @@ public class IndexController {
 	
 	private final Log log = LogFactory.getLog(this.getClass());
 	
-	private final PostService postService;
+	private final BooksService booksService;
 
 	@GetMapping("/")
 	public String index(Model model, @LoginUser SessionUser user) {
+		model.addAttribute("books", booksService.findAllByBookcaseIdDesc("5e0ae788-79df-4a5f-bf5f-6ecb06b0fe11"));
 		model.addAttribute("user", user);
 		return "index";
 	}
@@ -42,8 +42,8 @@ public class IndexController {
 	@GetMapping("/posts/update/{id}")
 	public String postsUpdate(@PathVariable Long id, Model model) {
 
-		PostsResponseDto dto = postService.findById(id);
-		model.addAttribute("post", dto);
+//		PostsResponseDto dto = postService.findById(id);
+//		model.addAttribute("post", dto);
 
 		return "posts/posts-update";
 	}

@@ -19,8 +19,6 @@ public class BooksService {
 
 	private final BooksRepository booksRepository;
 
-	private final BookcaseRepository bookcaseRepository;
-
 	@Transactional
 	public String save(BooksSaveRequestDto requestDto) {
 		return booksRepository.save(requestDto.toEntity()).getBookId();

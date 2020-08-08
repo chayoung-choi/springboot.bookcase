@@ -1,57 +1,44 @@
 {{>layout/header}}
+<style>
+    .swiper-container {
+      width: 100%;
+    }
+</style>
 <div class="container">
 {{>layout/nav-top}}
 <main class="container-fluid include-nav-top include-nav-bottom">
-  <div class="alert alert-primary" role="alert">
-	  first
-	</div>
-	<div class="alert alert-secondary" role="alert">
-	  2
-	</div>
-	<div class="alert alert-success" role="alert">
-	  A simple success alert—check it out!
-	</div>
 	<div class="alert alert-danger" role="alert">
-	  A simple danger alert—check it out!
+	  공지사항
 	</div>
-	<div class="alert alert-warning" role="alert">
-	  A simple warning alert—check it out!
-	</div>
-	<div class="alert alert-info" role="alert">
-	  A simple info alert—check it out!
-	</div>
-	<div class="alert alert-light" role="alert">
-	  A simple light alert—check it out!
-	</div>
-	<div class="alert alert-dark" role="alert">
-	  A simple dark alert—check it out!
-	</div>
-  <div class="alert alert-primary" role="alert">
-	  A simple primary alert—check it out!
-	</div>
-	<div class="alert alert-secondary" role="alert">
-	  A simple secondary alert—check it out!
-	</div>
-	<div class="alert alert-success" role="alert">
-	  A simple success alert—check it out!
-	</div>
-	<div class="alert alert-danger" role="alert">
-	  A simple danger alert—check it out!
-	</div>
-	<div class="alert alert-warning" role="alert">
-	  A simple warning alert—check it out!
-	</div>
-	<div class="alert alert-info" role="alert">
-	  A simple info alert—check it out!
-	</div>
-	<div class="alert alert-light" role="alert">
-	  A simple light alert—check it out!
-	</div>
-	<div class="alert alert-dark" role="alert">
-	  A simple dark alert—check it out!
+	<div class="swiper-container">
+	    <div class="swiper-wrapper">
+	    {{#books}}
+			<div class="swiper-slide mb-2 px-1 px-md-3">
+				<div class="book text-left" data-book-id="{{bookId}}">
+					<img src="{{thumbnail}}" class="card-img shadow-sm border" alt="{{title}}">
+					<span class="book-title overflow-hidden" style="height: 50px;">{{title}}</span>
+					<span><small class="text-muted">{{authors}}</small></span>
+				</div>
+			</div>
+		{{/books}}
+	    </div>
+	    <div class="swiper-pagination"></div>
+  	</div>
+	<div class="row row-cols-3 row-cols-md-6">
+	{{#books}}
+	  <div class="col mb-2 px-1 px-md-3">
+		<div class="h-100" data-book-id="{{bookId}}">
+		  <div class="no-gutters h-100">
+	      	<img src="{{thumbnail}}" class="card-img shadow-sm border" alt="{{title}}">
+	      	<span class="book-title ">{{title}}</span>
+	      	<p class=""><small class="text-muted">{{authors}}</small></p>
+		  </div>
+		</div>
+	  </div>
+	{{/books}}
 	</div>
 </main>
-<script src="/js/app/index.js"></script>
 {{>layout/nav-bottom}}
 </div>
 {{>layout/footer}}
+<script src="/js/app/index.js"></script>

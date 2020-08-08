@@ -13,6 +13,12 @@
 	  </li>
 	</ul>
 	<form class="navbar-button form-inline border-left pl-1" >
+      <a class="btn btn-white" type="button" data-tab-index="1" href="/bookcase/book-register" style="display: none;">
+      	<svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+		  <path fill-rule="evenodd" d="M8 3.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5H4a.5.5 0 0 1 0-1h3.5V4a.5.5 0 0 1 .5-.5z"/>
+		  <path fill-rule="evenodd" d="M7.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0V8z"/>
+		</svg>
+      </a>
       <a class="btn btn-white" type="button" data-tab-index="2" href="/bookcase/bookcase-save" style="display: none;">
       	<svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 		  <path fill-rule="evenodd" d="M8 3.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5H4a.5.5 0 0 1 0-1h3.5V4a.5.5 0 0 1 .5-.5z"/>
@@ -22,7 +28,7 @@
     </form>
 </nav>
 <main class="container-fluid include-nav-header include-nav-bottom">
-	<div class="swiper-container">
+	<div class="swiper-container min-h-75">
 		<div class="swiper-wrapper">
 			<div class="swiper-slide" data-page="1">
 				{{>bookcase/book}}

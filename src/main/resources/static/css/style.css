@@ -204,7 +204,7 @@ main.include-nav-bottom {
 	-webkit-align-items: center;
 	align-items: center;
 }
-.swiper-container {
+.swiper-container.min-h-75 {
 	width: 100%;
 	min-height: 75vh;
 }

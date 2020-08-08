@@ -10,6 +10,6 @@ public interface BooksRepository extends JpaRepository<Books, String> {
 	@Query("SELECT p From TB2_BOOKS p ORDER BY p.id DESC")
 	List<Books> findAllDesc();
 	
-	@Query("SELECT p From TB2_BOOKS p WHERE p.bookcaseId = :bookcaseId ORDER BY p.id DESC")
+	@Query("SELECT p From TB2_BOOKS p WHERE p.bookcaseId = :bookcaseId ORDER BY p.updatedDate DESC")
 	List<Books> findAllByBookcaseIdDesc(@Param("bookcaseId") String bookcaseId);
 }
