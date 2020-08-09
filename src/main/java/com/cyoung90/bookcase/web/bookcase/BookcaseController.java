@@ -39,7 +39,7 @@ public class BookcaseController {
 		return "bookcase/bookcase-save";
 	}
 	
-	@GetMapping("/bookcase/book/register")
+	@GetMapping("/bookcase/book-register")
 	public String bookRegister(Model model) {
 		return "bookcase/book-register";
 	}
