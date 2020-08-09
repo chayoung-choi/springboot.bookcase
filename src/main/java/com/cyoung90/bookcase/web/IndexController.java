@@ -24,6 +24,7 @@ public class IndexController {
 	@GetMapping("/")
 	public String index(Model model, @LoginUser SessionUser user) {
 		model.addAttribute("books", booksService.findAllByBookcaseIdDesc("5e0ae788-79df-4a5f-bf5f-6ecb06b0fe11"));
+		log.info("sessionUser >> " + user);
 		model.addAttribute("user", user);
 		return "index";
 	}
