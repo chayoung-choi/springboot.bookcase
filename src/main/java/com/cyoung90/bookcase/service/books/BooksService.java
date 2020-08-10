@@ -1,4 +1,4 @@
-package com.cyoung90.bookcase.service;
+package com.cyoung90.bookcase.service.books;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -6,7 +6,6 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.cyoung90.bookcase.domain.bookcase.BookcaseRepository;
 import com.cyoung90.bookcase.domain.books.BooksRepository;
 import com.cyoung90.bookcase.web.books.dto.BooksListResponseDto;
 import com.cyoung90.bookcase.web.books.dto.BooksSaveRequestDto;

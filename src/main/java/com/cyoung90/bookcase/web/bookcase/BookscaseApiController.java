@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cyoung90.bookcase.config.auth.LoginUser;
 import com.cyoung90.bookcase.config.auth.dto.SessionUser;
-import com.cyoung90.bookcase.service.BookcaseService;
+import com.cyoung90.bookcase.service.bookcase.BookcaseService;
 import com.cyoung90.bookcase.web.bookcase.dto.BookcaseSaveRequestDto;
 
 import lombok.RequiredArgsConstructor;

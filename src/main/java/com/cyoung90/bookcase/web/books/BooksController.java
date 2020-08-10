@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import com.cyoung90.bookcase.config.auth.LoginUser;
 import com.cyoung90.bookcase.config.auth.dto.SessionUser;
-import com.cyoung90.bookcase.service.BooksService;
+import com.cyoung90.bookcase.service.books.BooksService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -31,6 +31,11 @@ public class BooksController {
 	@GetMapping("/books/book-save")
 	public String bookSave(Model model, @LoginUser SessionUser user) {
 		return "bookcase/book-save";
+	}
+	
+	@GetMapping("/books/rental-search")
+	public String rentalSearch(Model model) {
+		return "books/book-rental-search";
 	}
 	
 }

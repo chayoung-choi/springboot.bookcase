@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.cyoung90.bookcase.config.auth.LoginUser;
 import com.cyoung90.bookcase.config.auth.dto.SessionUser;
-import com.cyoung90.bookcase.service.BooksService;
+import com.cyoung90.bookcase.service.books.BooksService;
 
 import lombok.RequiredArgsConstructor;
 

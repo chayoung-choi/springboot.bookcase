@@ -1,4 +1,4 @@
-package com.cyoung90.bookcase.service;
+package com.cyoung90.bookcase.service.bookcase;
 
 import java.util.List;
 import java.util.stream.Collectors;

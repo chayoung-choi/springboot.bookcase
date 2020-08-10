@@ -23,6 +23,22 @@ var books = {
 			console.log(JSON.stringify(error));
 		})
 	},
+	rentalSearch : function() {
+		var val = $("#search-title").val();
+		if (val.trim() == ""){
+			return;
+		}
+		$.ajax({
+			type : 'GET',
+			url : '/api/v1/book/rental-search/' + val,
+			dataType : 'text'
+		}).done(function(result) {
+			console.log(JSON.parse(result));
+		}).fail(function(error) {
+			alert("도서 검색에 실패하였습니다.");
+			console.log(JSON.stringify(error));
+		})
+	},
 	
 	register : function(){
 		var idx = event.target.closest('.card').dataset.idx;
