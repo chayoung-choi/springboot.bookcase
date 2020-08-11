@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.cyoung90.bookcase.domain.books.BooksRepository;
 import com.cyoung90.bookcase.web.books.dto.BooksListResponseDto;
+import com.cyoung90.bookcase.web.books.dto.BooksResponseDto;
 import com.cyoung90.bookcase.web.books.dto.BooksSaveRequestDto;
 
 import lombok.RequiredArgsConstructor;
@@ -36,6 +37,12 @@ public class BooksService {
 	@Transactional(readOnly = true) // 조회 기능일 때 조회속도 개선
 	public List<BooksListResponseDto> findAllByBookcaseIdDesc(String bookcaseId) {
 		return booksRepository.findAllByBookcaseIdDesc(bookcaseId).stream().map(BooksListResponseDto::new)
+				.collect(Collectors.toList());
+	}
+	
+	@Transactional(readOnly = true) // 조회 기능일 때 조회속도 개선
+	public List<BooksResponseDto> findAllByBookcaseIdAndTitleContainingOrderByUpdatedDateDesc(String bookcaseId, String title) {
+		return booksRepository.findAllByBookcaseIdAndTitleContainingOrderByUpdatedDateDesc(bookcaseId, title).stream().map(BooksResponseDto::new)
 				.collect(Collectors.toList());
 	}
 }

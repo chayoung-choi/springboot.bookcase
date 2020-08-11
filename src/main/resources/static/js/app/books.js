@@ -34,6 +34,7 @@ var books = {
 			dataType : 'text'
 		}).done(function(result) {
 			console.log(JSON.parse(result));
+			renderSearchBookList(JSON.parse(result));
 		}).fail(function(error) {
 			alert("도서 검색에 실패하였습니다.");
 			console.log(JSON.stringify(error));
