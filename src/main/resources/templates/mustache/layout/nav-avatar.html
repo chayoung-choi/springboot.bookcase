@@ -1,4 +1,4 @@
-{{#user}}
+{{#user.userId}}
 	<div class="dropdown">
 	  <button class="btn btn-white p-1" type="button" id="btnDropdownAvatar" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" 
 	  		style="max-width: 50px;">
@@ -18,7 +18,7 @@
 	    <a class="dropdown-item" href="/logout">로그아웃</a>
 	  </div>
 	</div>
-{{/user}}
-{{^user}}
+{{/user.userId}}
+{{^user.userId}}
 	<a class="btn btn-sm btn-outline-secondary" href="/login" style="font-size: 0.775rem;">로그인</a>
-{{/user}}
+{{/user.userId}}
