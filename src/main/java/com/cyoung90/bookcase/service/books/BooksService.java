@@ -6,10 +6,12 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.cyoung90.bookcase.domain.books.Books;
 import com.cyoung90.bookcase.domain.books.BooksRepository;
 import com.cyoung90.bookcase.web.books.dto.BooksListResponseDto;
 import com.cyoung90.bookcase.web.books.dto.BooksResponseDto;
 import com.cyoung90.bookcase.web.books.dto.BooksSaveRequestDto;
+import com.cyoung90.bookcase.web.dto.PostsResponseDto;
 
 import lombok.RequiredArgsConstructor;
 
@@ -44,5 +46,12 @@ public class BooksService {
 	public List<BooksResponseDto> findAllByBookcaseIdAndTitleContainingOrderByUpdatedDateDesc(String bookcaseId, String title) {
 		return booksRepository.findAllByBookcaseIdAndTitleContainingOrderByUpdatedDateDesc(bookcaseId, title).stream().map(BooksResponseDto::new)
 				.collect(Collectors.toList());
+	}
+	
+	@Transactional(readOnly = true) // 조회 기능일 때 조회속도 개선
+	public BooksListResponseDto findByBookId(String bookId) {
+			Books entity = booksRepository.findById(bookId) 
+					.orElseThrow(() -> new IllegalArgumentException("해당 도서 정보가 없습니다."));
+			return new BooksListResponseDto(entity);
 	}
 }

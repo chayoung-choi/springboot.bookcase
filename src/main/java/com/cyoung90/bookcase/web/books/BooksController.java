@@ -5,6 +5,7 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.cyoung90.bookcase.config.auth.LoginUser;
 import com.cyoung90.bookcase.config.auth.dto.SessionUser;
@@ -36,6 +37,12 @@ public class BooksController {
 	@GetMapping("/books/rental-search")
 	public String rentalSearch(Model model) {
 		return "books/book-rental-search";
+	}
+	
+	@GetMapping("/books/book/{bookId}")
+	public String book(Model model, @PathVariable String bookId) {
+		model.addAttribute("book", booksService.findByBookId(bookId));
+		return "books/book";
 	}
 	
 }
