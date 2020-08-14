@@ -49,9 +49,9 @@ public class BooksService {
 	}
 	
 	@Transactional(readOnly = true) // 조회 기능일 때 조회속도 개선
-	public BooksListResponseDto findByBookId(String bookId) {
+	public BooksResponseDto findByBookId(String bookId) {
 			Books entity = booksRepository.findById(bookId) 
 					.orElseThrow(() -> new IllegalArgumentException("해당 도서 정보가 없습니다."));
-			return new BooksListResponseDto(entity);
+			return new BooksResponseDto(entity);
 	}
 }

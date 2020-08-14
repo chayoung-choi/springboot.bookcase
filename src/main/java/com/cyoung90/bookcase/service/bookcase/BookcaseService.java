@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.cyoung90.bookcase.domain.bookcase.Bookcase;
 import com.cyoung90.bookcase.domain.bookcase.BookcaseRepository;
+import com.cyoung90.bookcase.domain.books.Books;
 import com.cyoung90.bookcase.web.bookcase.dto.BookcaseListResponseDto;
 import com.cyoung90.bookcase.web.bookcase.dto.BookcaseResponseDto;
 import com.cyoung90.bookcase.web.bookcase.dto.BookcaseSaveRequestDto;
@@ -19,6 +20,13 @@ import lombok.RequiredArgsConstructor;
 public class BookcaseService {
 	
 	private final BookcaseRepository bookcaseRepository;
+	
+	@Transactional(readOnly = true) // 조회 기능일 때 조회속도 개선
+	public BookcaseResponseDto findByBookcaseId(String bookcaseId) {
+		Bookcase entity = bookcaseRepository.findById(bookcaseId)
+			.orElseThrow(() -> new IllegalArgumentException("해당 정보가 없습니다."));
+		return new BookcaseResponseDto(entity);
+	}
 	
 	@Transactional
 	public String save(BookcaseSaveRequestDto requestDto) {

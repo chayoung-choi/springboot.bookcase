@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.cyoung90.bookcase.config.auth.LoginUser;
 import com.cyoung90.bookcase.config.auth.dto.SessionUser;
+import com.cyoung90.bookcase.service.bookcase.BookcaseService;
 import com.cyoung90.bookcase.service.books.BooksService;
+import com.cyoung90.bookcase.web.books.dto.BooksResponseDto;
 
 import lombok.RequiredArgsConstructor;
 
@@ -20,6 +22,8 @@ public class BooksController {
 	private final Log log = LogFactory.getLog(this.getClass());
 	
 	private final BooksService booksService;
+	
+	private final BookcaseService bookcaseService;
 	
 	@GetMapping("/books")
 	public String booksManagement(Model model, @LoginUser SessionUser user) {
@@ -41,7 +45,9 @@ public class BooksController {
 	
 	@GetMapping("/books/book/{bookId}")
 	public String book(Model model, @PathVariable String bookId) {
-		model.addAttribute("book", booksService.findByBookId(bookId));
+		BooksResponseDto book = booksService.findByBookId(bookId);
+		model.addAttribute("book", book);
+		model.addAttribute("bookcase", bookcaseService.findByBookcaseId(book.getBookcaseId()));
 		return "books/book";
 	}
 	
