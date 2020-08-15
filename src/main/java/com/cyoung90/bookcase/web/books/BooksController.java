@@ -28,8 +28,8 @@ public class BooksController {
 	@GetMapping("/books")
 	public String booksManagement(Model model, @LoginUser SessionUser user) {
 		model.addAttribute("user", user);
-		model.addAttribute("books", booksService.findAllByBookcaseIdDesc("5e0ae788-79df-4a5f-bf5f-6ecb06b0fe11"));
-		model.addAttribute("rental", booksService.findAllDesc());
+		model.addAttribute("rental-books", booksService.findAllByBookcaseIdDesc("5e0ae788-79df-4a5f-bf5f-6ecb06b0fe11"));
+		model.addAttribute("return-books", null);
 		return "books/index";
 	}
 	
@@ -40,7 +40,7 @@ public class BooksController {
 	
 	@GetMapping("/books/rental-search")
 	public String rentalSearch(Model model) {
-		return "books/book-rental-search";
+		return "books/books-rental-search";
 	}
 	
 	@GetMapping("/books/book/{bookId}")

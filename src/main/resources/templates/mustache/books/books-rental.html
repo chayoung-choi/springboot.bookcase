@@ -1,14 +1,14 @@
 <div class="container">
 	<div id="box-rental" class="row row-cols-3 row-cols-md-6">
-		{{#books}}
+		{{#rental-books}}
 		  {{>books/temp-book-col}}
-		{{/books}}
-		{{^books}}
+		{{/rental-books}}
+		{{^rental-books}}
 		<div class="col-12 col-md-12">
 			<div class="alert alert-info" role="alert">
 				책장에 도서가 없습니다.
 			</div>
 		</div>
-		{{/books}}
+		{{/rental-books}}
 	</div>
 </div>

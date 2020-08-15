@@ -1,0 +1,22 @@
+<div class="container">
+	<div id="box-return" class="row row-cols-3 row-cols-md-6">
+		{{#return-books}}
+		  {{>books/temp-book-col}}
+		{{/return-books}}
+		{{^return-books}}
+		<div class="col-12 col-md-12 mt-3">
+			<div class="alert alert-info text-center" role="alert">
+				반납할 도서가 없군요!
+				<div class="row mt-3">
+					<div class="col-6">
+						<button type="button" class="btn btn-info btn-block">대여</button>
+					</div>
+					<div class="col-6">
+						<button type="button" class="btn btn-secondary btn-block">대여 이력</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		{{/return-books}}
+	</div>
+</div>
