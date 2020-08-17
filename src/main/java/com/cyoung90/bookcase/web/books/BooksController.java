@@ -44,8 +44,9 @@ public class BooksController {
 	}
 	
 	@GetMapping("/books/book/{bookId}")
-	public String book(Model model, @PathVariable String bookId) {
+	public String book(Model model, @PathVariable String bookId, @LoginUser SessionUser user) {
 		BooksResponseDto book = booksService.findByBookId(bookId);
+		model.addAttribute("user", user);
 		model.addAttribute("book", book);
 		model.addAttribute("bookcase", bookcaseService.findByBookcaseId(book.getBookcaseId()));
 		return "books/book";

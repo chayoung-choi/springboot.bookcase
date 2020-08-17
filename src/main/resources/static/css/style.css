@@ -175,13 +175,13 @@ body {
 /*
 * Main
 */
-main.include-nav-header {
+.include-nav-header {
   padding-top : 66px;
 }
-main.include-nav-top {
+.include-nav-top {
   padding-top : 100px;
 }
-main.include-nav-bottom {
+.include-nav-bottom {
   padding-bottom : 75px;
 }
 

@@ -15,6 +15,7 @@ public class BooksResponseDto {
 	private String bookId;
 	private String bookcaseId;
 	private String title;
+	
 	private String contents;
 	
 	@Convert(converter = StringListConverter.class)
