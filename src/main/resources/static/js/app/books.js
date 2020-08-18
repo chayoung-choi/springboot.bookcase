@@ -59,20 +59,26 @@ var books = {
 		});
 	},
 	
-	rental : function() {
-		var idx = event.target.closest('li').dataset.idx;
-		var book = searchBookList[idx];
+	rental : function(bookId) {
+		if (!confirm("대여하시겠습니까?")){
+			return;
+		}
+		
+		var data = {
+			bookId : bookId,
+		};
+		console.log("data", data);
 		$.ajax({
 			type : 'POST',
 			url : '/api/v1/book/rental',
-			data : JSON.stringify(book),
+			data : JSON.stringify(data),
 			contentType : 'application/json; charset=utf-8',
 			dataType : 'text'
 		}).done(function() {
 			alert("대여되었습니다.");
 			window.location.reload();
 		}).fail(function(error) {
-			alert("도서 검색에 실패하였습니다.");
+			alert("대여에 실패하였습니다.");
 			console.log(JSON.stringify(error));
 		});
 	}

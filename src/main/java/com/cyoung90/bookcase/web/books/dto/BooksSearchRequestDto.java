@@ -10,16 +10,21 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class BooksSearchRequestDto {
 	
+	private String bookId;
 	private String title;
-	
+	private String sessionId;
 
 	@Builder
-	public BooksSearchRequestDto(String title) {
-		this.title = title;
+	public BooksSearchRequestDto(String book_id) {
+		this.bookId = book_id;
 	}
 
 	public Books toEntity() {
-		return Books.builder().title(title).build();
+		return Books.builder().bookId(bookId).title(title).build();
+	}
+
+	public void setSessionId(String sessionId) {
+		this.sessionId = sessionId;
 	}
 
 }

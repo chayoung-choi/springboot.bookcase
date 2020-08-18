@@ -17,6 +17,7 @@ import com.cyoung90.bookcase.service.books.BooksService;
 import com.cyoung90.bookcase.web.bookcase.dto.BookcaseResponseDto;
 import com.cyoung90.bookcase.web.books.dto.BooksResponseDto;
 import com.cyoung90.bookcase.web.books.dto.BooksSaveRequestDto;
+import com.cyoung90.bookcase.web.books.dto.BooksSearchRequestDto;
 
 import lombok.RequiredArgsConstructor;
 
@@ -36,20 +37,21 @@ public class BooksApiController {
 		return booksService.save(requestDto);
 	}
 
-	@PostMapping("/api/v1/book/rental")
-	public String rental(@RequestBody BooksSaveRequestDto requestDto, @LoginUser SessionUser user) {
-		requestDto.setSessionId(user.getUserId());
-		return booksService.rental(requestDto);
-	}
 
 	@PostMapping("/api/v1/book/register")
 	public String register(@RequestBody BooksSaveRequestDto requestDto, @LoginUser SessionUser user) {
 		BookcaseResponseDto bookcaseResponseDto = bookcaseService.findByUserId(user.getUserId());
 		requestDto.setBookcase_id(bookcaseResponseDto.getBookcaseId());
 		requestDto.setSessionId(user.getUserId());
-		return booksService.rental(requestDto);
+		return booksService.save(requestDto);
 	}
 
+	@PostMapping("/api/v1/book/rental")
+	public String rental(@RequestBody BooksSearchRequestDto requestDto, @LoginUser SessionUser user) {
+		requestDto.setSessionId(user.getUserId());
+		return booksService.rental(requestDto);
+	}
+	
 	@GetMapping("/api/v1/book/rental-search/{title}")
 	public List<BooksResponseDto> rentalSearch(@PathVariable String title, @LoginUser SessionUser user) {
 		String bookcaseId = "5e0ae788-79df-4a5f-bf5f-6ecb06b0fe11";
