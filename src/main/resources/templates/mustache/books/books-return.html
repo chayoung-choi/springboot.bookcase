@@ -1,9 +1,9 @@
 <div class="container">
-	<div id="box-return" class="row row-cols-3 row-cols-md-6">
-		{{#return-books}}
+	<div id="box-rental" class="row row-cols-3 row-cols-md-6">
+		{{#rental-books}}
 		  {{>books/temp-book-col}}
-		{{/return-books}}
-		{{^return-books}}
+		{{/rental-books}}
+		{{^rental-books}}
 		<div class="col-12 col-md-12 mt-3">
 			<div class="alert alert-info text-center" role="alert">
 				반납할 도서가 없군요!
@@ -17,6 +17,6 @@
 				</div>
 			</div>
 		</div>
-		{{/return-books}}
+		{{/rental-books}}
 	</div>
 </div>

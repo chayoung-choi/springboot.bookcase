@@ -33,16 +33,20 @@ public class BooksService {
 
 	@Transactional
 	public String rental(BooksSearchRequestDto requestDto) {
-		Books book = booksRepository.findById(requestDto.getBookId())
+		String bookId = requestDto.getBook_id();
+		Books book = booksRepository.findById(bookId)
 				.orElseThrow(() -> new IllegalArgumentException("해당 정보가 없습니다."));
-		System.out.println("booksRentalRepository.getRentalMaxSeq() >> " + booksRentalRepository.getRentalMaxSeq());
+		System.out.println("booksRentalRepository.getRentalMaxSeq() >> " + booksRentalRepository.getRentalMaxSeq(bookId));
 		BooksRental bookRental = new BooksRental();
 		bookRental.setBookId(book.getBookId());
 		bookRental.setTitle(book.getTitle());
-		bookRental.setRentalSeq(booksRentalRepository.getRentalMaxSeq());
+		bookRental.setRentalSeq(booksRentalRepository.getRentalMaxSeq(bookId));
 		bookRental.setBookcaseId(book.getBookcaseId());
 		bookRental.setStatus("대여중");
 		bookRental.setRentalDate(LocalDateTime.now());
+		bookRental.setUserId(requestDto.getSessionId());
+		bookRental.setCreateUser(requestDto.getSessionId());
+		bookRental.setUpdatedUser(requestDto.getSessionId());
 		booksRentalRepository.save(bookRental);
 		return booksRepository.save(book).getBookId();
 	}

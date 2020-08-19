@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.cyoung90.bookcase.config.auth.LoginUser;
 import com.cyoung90.bookcase.config.auth.dto.SessionUser;
+import com.cyoung90.bookcase.domain.books.rental.BooksRental;
 import com.cyoung90.bookcase.service.bookcase.BookcaseService;
+import com.cyoung90.bookcase.service.books.BooksRentalService;
 import com.cyoung90.bookcase.service.books.BooksService;
 import com.cyoung90.bookcase.web.books.dto.BooksResponseDto;
 
@@ -25,11 +27,13 @@ public class BooksController {
 	
 	private final BookcaseService bookcaseService;
 	
+	private final BooksRentalService booksRentalService;
+	
 	@GetMapping("/books")
 	public String booksManagement(Model model, @LoginUser SessionUser user) {
 		model.addAttribute("user", user);
-		model.addAttribute("rental-books", booksService.findAllByBookcaseIdDesc("5e0ae788-79df-4a5f-bf5f-6ecb06b0fe11"));
-		model.addAttribute("return-books", null);
+		model.addAttribute("books", booksService.findAllByBookcaseIdDesc("5e0ae788-79df-4a5f-bf5f-6ecb06b0fe11"));
+		model.addAttribute("rental-books", booksRentalService.findAllByUserId(user.getUserId()));
 		return "books/index";
 	}
 	

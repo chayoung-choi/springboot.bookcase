@@ -65,7 +65,7 @@ var books = {
 		}
 		
 		var data = {
-			bookId : bookId,
+			book_id : bookId,
 		};
 		console.log("data", data);
 		$.ajax({
@@ -79,7 +79,7 @@ var books = {
 			window.location.reload();
 		}).fail(function(error) {
 			alert("대여에 실패하였습니다.");
-			console.log(JSON.stringify(error));
+			//console.log(JSON.stringify(error));
 		});
 	}
 };
