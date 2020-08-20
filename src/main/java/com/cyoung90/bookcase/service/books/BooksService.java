@@ -45,8 +45,6 @@ public class BooksService {
 		bookRental.setStatus("대여중");
 		bookRental.setRentalDate(LocalDateTime.now());
 		bookRental.setUserId(requestDto.getSessionId());
-		bookRental.setCreateUser(requestDto.getSessionId());
-		bookRental.setUpdatedUser(requestDto.getSessionId());
 		booksRentalRepository.save(bookRental);
 		return booksRepository.save(book).getBookId();
 	}

@@ -3,11 +3,16 @@ package com.cyoung90.bookcase.domain.books.rental;
 import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import com.cyoung90.bookcase.domain.BaseTimeEntity;
+import com.cyoung90.bookcase.domain.books.Books;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -40,6 +45,10 @@ public class BooksRental extends BaseTimeEntity {
 	
 	private String createUser;
 	private String updatedUser;
+	
+	@ManyToOne(targetEntity = Books.class, fetch = FetchType.EAGER)
+	@JoinColumn(name="bookId", insertable = false, updatable = false)
+	private Books book;
 	
 	@Builder
 	public BooksRental(String bookId, Integer rentalSeq, String title, String bookcaseId, String status, String userId,

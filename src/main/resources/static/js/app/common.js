@@ -1,7 +1,6 @@
 var common = {
 	init : function() {
 		var _this = this;
-		console.log("common init");
 	},
 	// input Enter시 buttn 동시 클릭 트리거 
 	triggerForClickElement : function(btnId) {

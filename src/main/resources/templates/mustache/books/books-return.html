@@ -1,7 +1,18 @@
 <div class="container">
 	<div id="box-rental" class="row row-cols-3 row-cols-md-6">
 		{{#rental-books}}
-		  {{>books/temp-book-col}}
+		<div class="col mb-2 px-0 px-md-3">
+			<a class="btn btn-white" href="/books/book/{{bookId}}" role="button">
+				<div class="h-100" data-book-id="{{bookId}}" style="cursor:pointer;">
+					<div class="no-gutters h-100">
+						<span class="book-title">{{title}}</span>
+						<p>
+							<small class="text-muted">{{status}}</small>
+						</p>
+					</div>
+				</div>
+			</a>
+		</div>
 		{{/rental-books}}
 		{{^rental-books}}
 		<div class="col-12 col-md-12 mt-3">
