@@ -10,5 +10,6 @@ public interface BooksRentalRepository extends JpaRepository<BooksRental, String
 	@Query("SELECT NVL(MAX(rentalSeq), 0) + 1 FROM TB2_BOOKS_RENTAL WHERE bookId = :bookId")
 	Integer getRentalMaxSeq(@Param("bookId") String bookId);
 
-	List<BooksRental> findAllByUserId(String userId);
+	@Query("SELECT r, b FROM TB2_BOOKS_RENTAL r JOIN TB2_BOOKS b ON (r.bookId=b.bookId) WHERE r.userId = :userId")
+	List<BooksRental> findAllByUserId(@Param("userId") String userId);
 }

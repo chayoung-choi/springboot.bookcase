@@ -46,13 +46,13 @@ public class BooksRental extends BaseTimeEntity {
 	private String createUser;
 	private String updatedUser;
 	
-	@ManyToOne(targetEntity = Books.class, fetch = FetchType.EAGER)
+	@ManyToOne(targetEntity = Books.class)
 	@JoinColumn(name="bookId", insertable = false, updatable = false)
-	private Books book;
+	private Books books;
 	
 	@Builder
 	public BooksRental(String bookId, Integer rentalSeq, String title, String bookcaseId, String status, String userId,
-			LocalDateTime rentalDate, LocalDateTime returnDate, String createUser, String updatedUser) {
+			LocalDateTime rentalDate, LocalDateTime returnDate, String createUser, String updatedUser, Books books) {
 		this.bookId = bookId;
 		this.rentalSeq = rentalSeq;
 		this.title = title;
@@ -63,6 +63,7 @@ public class BooksRental extends BaseTimeEntity {
 		this.returnDate = returnDate;
 		this.createUser = createUser;
 		this.updatedUser = updatedUser;
+		this.books = books;
 	}
 	
 	
