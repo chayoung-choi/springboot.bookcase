@@ -1,5 +1,6 @@
 package com.cyoung90.bookcase.web.books.dto;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import com.cyoung90.bookcase.domain.books.Books;
@@ -23,6 +24,8 @@ public class BooksRentalResponseDTO {
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
 	private LocalDateTime returnDate;
 
+	private LocalDate fmtRenatlDate;
+	
 	private Books books;
 	
 	public BooksRentalResponseDTO(BooksRental entity) {
@@ -35,5 +38,6 @@ public class BooksRentalResponseDTO {
 		this.renatlDate = entity.getRentalDate();
 		this.returnDate = entity.getReturnDate();
 		this.books = entity.getBooks();
+		this.fmtRenatlDate = LocalDate.from(entity.getRentalDate());
 	}
 }

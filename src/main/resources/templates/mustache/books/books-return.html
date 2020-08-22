@@ -1,19 +1,33 @@
 <div class="container">
-	<div id="box-rental" class="row row-cols-3 row-cols-md-6">
+	<div class="row row-cols-1 row-cols-md-2">
 		{{#rental-books}}
-		<div class="col mb-2 px-0 px-md-3">
-			<a class="btn btn-white" href="/books/book/{{bookId}}" role="button">
-				<div class="h-100" data-book-id="{{bookId}}" style="cursor:pointer;">
-					<img src="{{books.thumbnail}}" class="card-img shadow-sm border" alt="{{title}}">
-					<div class="no-gutters h-100">
-						<span class="book-title">{{title}}</span>
-						<p>
-							<small class="text-muted">{{status}}</small>
-						</p>
+		  <div class="col mb-2">
+			<div class="card h-100 shadow-sm" data-book-id="{{books.bookId}}">
+			  <div class="row no-gutters h-100">
+			    <div class="col-5 col-md-4">
+			      <img src="{{books.thumbnail}}" class="card-img img-thumbnail" alt="...">
+			    </div>
+			    <div class="col-7 col-md-8">
+				    <div class="d-flex h-100 flex-column">
+					    <div class="w-100 px-2 pt-2">
+					    	<h5 class="card-title book-title mb-1">{{title}}</h5>
+							<div class="book-authors">{{books.authors}}</div>
+					        <p class="card-text book-publisher"><small class="text-muted">{{books.publisher}}</small></p>
+					        <p class="card-text">{{fmtRenatlDate}}</p>
+					    </div>
+					    <div class="mt-auto d-flex justify-content-around p-2">
+					      <div class="w-100 p-1">
+						    <button type="button" class="btn btn-primary btn-block">반납</button>
+						  </div>
+					      <div class="w-100 p-1">
+						    <button type="button" class="btn btn-outline-primary btn-block">연장</button>
+						  </div>
+					    </div>
 					</div>
-				</div>
-			</a>
-		</div>
+			    </div>
+			  </div>
+			</div>
+		  </div>
 		{{/rental-books}}
 		{{^rental-books}}
 		<div class="col-12 col-md-12 mt-3">
