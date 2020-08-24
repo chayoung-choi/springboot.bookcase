@@ -32,7 +32,7 @@ public class BooksService {
 	}
 
 	@Transactional
-	public String rental(BooksSearchRequestDto requestDto) {
+	public String rentalBook(BooksSearchRequestDto requestDto) {
 		String bookId = requestDto.getBook_id();
 		Books book = booksRepository.findById(bookId)
 				.orElseThrow(() -> new IllegalArgumentException("해당 정보가 없습니다."));

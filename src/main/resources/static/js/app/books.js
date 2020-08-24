@@ -81,6 +81,28 @@ var books = {
 			alert("대여에 실패하였습니다.");
 			//console.log(JSON.stringify(error));
 		});
+	},
+	return : function(bookId) {
+		if (!confirm("반납하시겠습니까?")){
+			return;
+		}
+		var data = {
+			book_id : bookId,
+		};
+		
+		$.ajax({
+			type : 'PUT',
+			url : '/api/v1/book/return/' + bookId,
+			data : JSON.stringify(data),
+			contentType : 'application/json; charset=utf-8',
+			dataType : 'text'
+		}).done(function() {
+			alert("반납되었습니다.");
+			window.location.reload();
+		}).fail(function(error) {
+			alert("반납에 실패하였습니다.");
+			//console.log(JSON.stringify(error));
+		});
 	}
 };
 

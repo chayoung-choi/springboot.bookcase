@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.cyoung90.bookcase.domain.books.rental.BooksRental;
 import com.cyoung90.bookcase.domain.books.rental.BooksRentalRepository;
+import com.cyoung90.bookcase.domain.posts.Posts;
 import com.cyoung90.bookcase.web.books.dto.BooksRentalResponseDTO;
 import com.cyoung90.bookcase.web.books.dto.BooksRentalSaveRequestDto;
 
@@ -30,5 +31,15 @@ public class BooksRentalService {
 				.collect(Collectors.toList());
 	}
 	
+	@Transactional
+	public String returnBook(String bookId, String userId) {
+		BooksRental booksRental = booksRentalRepository.findByBookIdAndUserId(bookId, userId);
+		if (booksRental == null) {
+			new IllegalArgumentException("대여 정보가 없습니다.");
+		}
+		
+		booksRental.returnBook(userId);
+		return bookId;
+	}
 	
 }

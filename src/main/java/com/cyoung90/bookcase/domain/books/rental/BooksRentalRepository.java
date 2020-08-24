@@ -13,4 +13,5 @@ public interface BooksRentalRepository extends JpaRepository<BooksRental, String
 //	@Query("SELECT r, b FROM TB2_BOOKS_RENTAL r JOIN TB2_BOOKS b ON (r.bookId=b.bookId) WHERE r.userId = :userId")
 	List<BooksRental> findAllByUserId(String userId);
 	
+	BooksRental findByBookIdAndUserId(String bookId, String userId);
 }

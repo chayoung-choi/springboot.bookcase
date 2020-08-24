@@ -66,5 +66,9 @@ public class BooksRental extends BaseTimeEntity {
 		this.books = books;
 	}
 	
+	public void returnBook(String userId) {
+		this.status = " ";
+		this.updatedUser = userId;
+	}
 	
 }
