@@ -8,7 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.cyoung90.bookcase.domain.books.rental.BooksRental;
 import com.cyoung90.bookcase.domain.books.rental.BooksRentalRepository;
-import com.cyoung90.bookcase.domain.posts.Posts;
 import com.cyoung90.bookcase.web.books.dto.BooksRentalResponseDTO;
 import com.cyoung90.bookcase.web.books.dto.BooksRentalSaveRequestDto;
 
@@ -26,14 +25,14 @@ public class BooksRentalService {
 	}
 	
 	@Transactional(readOnly = true) // 조회 기능일 때 조회속도 개선
-	public List<BooksRentalResponseDTO> findAllByUserId(String userId) {
-		return booksRentalRepository.findAllByUserId(userId).stream().map(BooksRentalResponseDTO::new)
+	public List<BooksRentalResponseDTO> getBooksRentalList(String userId) {
+		return booksRentalRepository.findAllByUserIdAndStatus(userId, "대여중").stream().map(BooksRentalResponseDTO::new)
 				.collect(Collectors.toList());
 	}
 	
 	@Transactional
 	public String returnBook(String bookId, String userId) {
-		BooksRental booksRental = booksRentalRepository.findByBookIdAndUserId(bookId, userId);
+		BooksRental booksRental = booksRentalRepository.findByBookIdAndUserIdAndStatus(bookId, userId, "대여중");
 		if (booksRental == null) {
 			new IllegalArgumentException("대여 정보가 없습니다.");
 		}

@@ -63,15 +63,11 @@ var books = {
 		if (!confirm("대여하시겠습니까?")){
 			return;
 		}
-		
-		var data = {
-			book_id : bookId,
-		};
-		console.log("data", data);
+
 		$.ajax({
 			type : 'POST',
 			url : '/api/v1/book/rental',
-			data : JSON.stringify(data),
+			data : bookId,
 			contentType : 'application/json; charset=utf-8',
 			dataType : 'text'
 		}).done(function() {

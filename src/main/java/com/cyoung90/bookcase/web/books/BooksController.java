@@ -33,7 +33,7 @@ public class BooksController {
 	public String booksManagement(Model model, @LoginUser SessionUser user) {
 		model.addAttribute("user", user);
 		model.addAttribute("books", booksService.findAllByBookcaseIdDesc("5e0ae788-79df-4a5f-bf5f-6ecb06b0fe11"));
-		model.addAttribute("rental-books", booksRentalService.findAllByUserId(user.getUserId()));
+		model.addAttribute("rental-books", booksRentalService.getBooksRentalList(user.getUserId()));
 		return "books/index";
 	}
 	

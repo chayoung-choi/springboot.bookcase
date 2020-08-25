@@ -67,7 +67,8 @@ public class BooksRental extends BaseTimeEntity {
 	}
 	
 	public void returnBook(String userId) {
-		this.status = " ";
+		this.status = "반납완료";
+		this.returnDate = LocalDateTime.now();
 		this.updatedUser = userId;
 	}
 	

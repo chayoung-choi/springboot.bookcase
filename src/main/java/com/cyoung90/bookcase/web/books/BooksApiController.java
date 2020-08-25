@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cyoung90.bookcase.config.auth.LoginUser;
@@ -51,9 +52,9 @@ public class BooksApiController {
 	}
 
 	@PostMapping("/api/v1/book/rental")
-	public String bookRental(@RequestBody BooksSearchRequestDto requestDto, @LoginUser SessionUser user) {
-		requestDto.setSessionId(user.getUserId());
-		return booksService.rentalBook(requestDto);
+	public String bookRental(@RequestBody String book_Id, @LoginUser SessionUser user) {
+		log.info("book_Id >> " + book_Id);
+		return booksService.rentalBook(book_Id, user.getUserId());
 	}
 	
 	@GetMapping("/api/v1/book/rental-search/{title}")
@@ -64,7 +65,7 @@ public class BooksApiController {
 	}
 	
 	@PutMapping("/api/v1/book/return/{bookId}")
-	public String returnBook(@PathVariable String bookId, @RequestBody BooksSearchRequestDto requestDto, @LoginUser SessionUser user) {
+	public String bookReturn(@PathVariable String bookId, @RequestBody BooksSearchRequestDto requestDto, @LoginUser SessionUser user) {
 		return booksRentalService.returnBook(bookId, user.getUserId());
 	}
 }

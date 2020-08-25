@@ -32,21 +32,20 @@ public class BooksService {
 	}
 
 	@Transactional
-	public String rentalBook(BooksSearchRequestDto requestDto) {
-		String bookId = requestDto.getBook_id();
+	public String rentalBook(String bookId, String userId) {
 		Books book = booksRepository.findById(bookId)
 				.orElseThrow(() -> new IllegalArgumentException("해당 정보가 없습니다."));
-		System.out.println("booksRentalRepository.getRentalMaxSeq() >> " + booksRentalRepository.getRentalMaxSeq(bookId));
 		BooksRental bookRental = new BooksRental();
 		bookRental.setBookId(book.getBookId());
 		bookRental.setTitle(book.getTitle());
 		bookRental.setRentalSeq(booksRentalRepository.getRentalMaxSeq(bookId));
+		bookRental.setUserId(userId);
 		bookRental.setBookcaseId(book.getBookcaseId());
 		bookRental.setStatus("대여중");
 		bookRental.setRentalDate(LocalDateTime.now());
-		bookRental.setUserId(requestDto.getSessionId());
-		booksRentalRepository.save(bookRental);
-		return booksRepository.save(book).getBookId();
+		bookRental.setCreateUser(userId);
+		bookRental.setUpdatedUser(userId);
+		return booksRentalRepository.save(bookRental).getBookId();
 	}
 
 	@Transactional(readOnly = true) // 조회 기능일 때 조회속도 개선
