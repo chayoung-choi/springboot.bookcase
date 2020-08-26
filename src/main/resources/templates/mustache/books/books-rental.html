@@ -1,7 +1,19 @@
 <div class="container">
 	<div id="box-rental" class="row row-cols-3 row-cols-md-6">
 		{{#books}}
-		  {{>books/temp-book-col}}
+		<div class="col mb-2 px-0 px-md-3">
+			<a class="btn btn-white" href="/books/book/{{bookId}}" role="button">
+				<div class="" data-book-id="{{bookId}}" style="cursor:pointer;">
+					<div class="no-gutters text-left">
+						<img src="{{thumbnail}}" class="card-img shadow-sm border" alt="{{title}}">
+						<span class="book-title">{{title}}</span>
+						<p>
+							<small class="text-muted">{{authors}}</small>
+						</p>
+					</div>
+				</div>
+			</a>
+		</div>
 		{{/books}}
 		{{^books}}
 		<div class="col-12 col-md-12">

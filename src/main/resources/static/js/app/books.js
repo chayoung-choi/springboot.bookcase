@@ -59,7 +59,7 @@ var books = {
 		});
 	},
 	
-	rental : function(bookId) {
+	rentalBook : function(bookId) {
 		if (!confirm("대여하시겠습니까?")){
 			return;
 		}
@@ -78,7 +78,7 @@ var books = {
 			//console.log(JSON.stringify(error));
 		});
 	},
-	return : function(bookId) {
+	returnBook : function(bookId) {
 		if (!confirm("반납하시겠습니까?")){
 			return;
 		}

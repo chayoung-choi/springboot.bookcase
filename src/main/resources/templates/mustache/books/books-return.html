@@ -4,7 +4,7 @@
 		  <div class="col mb-2">
 			<div class="card h-100 shadow-sm" data-book-id="{{books.bookId}}">
 			  <div class="row no-gutters h-100">
-			    <div class="col-5 col-md-4">
+			    <div class="col-5 col-md-4 d-flex align-items-center">
 			      <img src="{{books.thumbnail}}" class="card-img img-thumbnail" alt="...">
 			    </div>
 			    <div class="col-7 col-md-8">
@@ -13,11 +13,11 @@
 					    	<h5 class="card-title book-title mb-1">{{title}}</h5>
 							<div class="book-authors">{{books.authors}}</div>
 					        <p class="card-text book-publisher"><small class="text-muted">{{books.publisher}}</small></p>
-					        <p class="card-text">{{fmtRenatlDate}}</p>
+					        <p class="card-text">대여일 : {{fmtRenatlDate}}</p>
 					    </div>
 					    <div class="mt-auto d-flex justify-content-around p-2">
 					      <div class="w-100 p-1">
-						    <button type="button" class="btn btn-primary btn-block" onclick="books.return('{{books.bookId}}')">반납</button>
+						    <button type="button" class="btn btn-primary btn-block" onclick="books.returnBook('{{books.bookId}}')">반납</button>
 						  </div>
 					      <div class="w-100 p-1">
 						    <button type="button" class="btn btn-outline-primary btn-block">연장</button>
