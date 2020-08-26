@@ -23,7 +23,7 @@ var books = {
 			console.log(JSON.stringify(error));
 		})
 	},
-	rentalSearch : function() {
+	searchRentalBooks : function() {
 		var val = $("#search-title").val();
 		if (val.trim() == ""){
 			return;

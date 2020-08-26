@@ -53,8 +53,7 @@ public class BooksApiController {
 
 	@PostMapping("/api/v1/book/rental")
 	public String bookRental(@RequestBody String book_Id, @LoginUser SessionUser user) {
-		log.info("book_Id >> " + book_Id);
-		return booksService.rentalBook(book_Id, user.getUserId());
+		return booksRentalService.rentalBook(book_Id, user.getUserId());
 	}
 	
 	@GetMapping("/api/v1/book/rental-search/{title}")
