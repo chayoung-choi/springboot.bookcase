@@ -1,5 +1,5 @@
 {{>layout/header}}
-<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
+<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom fixed-top">
 	<a class="navbar-brand" href="javascript:history.back();">
 	 	<svg width="1em" height="1.5em" viewBox="0 0 16 16" class="bi bi-arrow-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 	  		<path fill-rule="evenodd" d="M5.854 4.646a.5.5 0 0 1 0 .708L3.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0z"/>
@@ -8,11 +8,11 @@
 	</a>
 	<ul class="navbar-nav mr-auto">
 		<li class="nav-item active">
-			<strong>책장 등록</strong>
+			<strong>책장 프로필</strong>
 		</li>
 	</ul>
 </nav>
-<div class="container mt-3">
+<div class="container include-nav-header pb-3">
 	<form id="form" class="needs-validation" novalidate>
 	  <div class="form-row">
 	    <div class="col mb-3">
@@ -32,9 +32,9 @@
 	      </div>
 	    </div>
 	  </div>
-	  <button class="btn btn-primary btn-block" type="button" onclick="bookcase.saveBookcase()">
-	  	등록
-	  </button>
+		<button class="btn btn-primary btn-block" type="button" onclick="bookcase.saveBookcase()">
+			저장
+		</button>
 	</form>
 </div>
 {{>layout/footer}}

@@ -184,7 +184,9 @@ body {
 .include-nav-bottom {
   padding-bottom : 75px;
 }
-
+.fixed-bottom-white-blur {
+  background-color: rgba( 255, 255, 255, 0.5 );
+}
 #oauthLoginList ul li:not(:first-child) a {
     max-width : 280px;
 }
