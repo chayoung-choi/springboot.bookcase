@@ -78,12 +78,16 @@ var books = {
 			//console.log(JSON.stringify(error));
 		});
 	},
-	returnBook : function(bookId) {
+	returnBook : function() {
 		if (!confirm("반납하시겠습니까?")){
 			return;
 		}
+		var bookId = event.target.closest(".modal-content").dataset.bookId;
+		var review = event.target.closest(".modal-content").querySelector("#review").value;
+
 		var data = {
 			book_id : bookId,
+			review :  review
 		};
 		
 		$.ajax({
@@ -99,9 +103,11 @@ var books = {
 			alert("반납에 실패하였습니다.");
 			//console.log(JSON.stringify(error));
 		});
+	},
+	showReturnModal : function(event){
+		console.log(event);
 	}
 };
-
 books.init();
 
 function renderSearchBookList(data){
@@ -122,3 +128,14 @@ function renderSearchBookList(data){
 		document.getElementById('books-search-result').innerHTML = rendered;    
     });
 }
+
+$(document).ready(function () {
+	
+	$('#returnModal').on('show.bs.modal', function (event) {
+	  var button = $(event.relatedTarget);
+	  var bookId = button.data('book-id');
+	  var modal = $(this);
+	  modal.find('.modal-content').data("bookId", bookId);
+	});
+
+});

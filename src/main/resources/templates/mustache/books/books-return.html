@@ -17,7 +17,8 @@
 					    </div>
 					    <div class="mt-auto d-flex justify-content-around p-2">
 					      <div class="w-100 p-1">
-						    <button type="button" class="btn btn-primary btn-block" onclick="books.returnBook('{{books.bookId}}')">반납</button>
+					        <button type="button" class="btn btn-primary btn-block" data-toggle="modal"
+					        	data-target="#returnModal" data-book-id="{{books.bookId}}">반납</button>
 						  </div>
 					      <div class="w-100 p-1">
 						    <button type="button" class="btn btn-outline-primary btn-block">연장</button>
@@ -46,4 +47,3 @@
 		{{/rental-books}}
 	</div>
 </div>
-<script src="/js/app/books.js"></script>
