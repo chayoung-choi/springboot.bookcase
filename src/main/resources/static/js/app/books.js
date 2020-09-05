@@ -82,12 +82,16 @@ var books = {
 		if (!confirm("반납하시겠습니까?")){
 			return;
 		}
-		var bookId = event.target.closest(".modal-content").dataset.bookId;
-		var review = event.target.closest(".modal-content").querySelector("#review").value;
+		
+		var content = event.target.closest(".modal-content");
+		var bookId = content.dataset.bookId;
+		var review = content.querySelector("#review").value;
+		var privateSwitch = content.querySelector("#privateSwitch").checked;
 
 		var data = {
 			book_id : bookId,
-			review :  review
+			review :  review,
+			private_yn : privateSwitch
 		};
 		
 		$.ajax({
