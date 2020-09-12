@@ -14,3 +14,27 @@
 	<link href="/css/libs/swiper.min.css" rel="stylesheet">
 </head>
 <body>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  var firebaseConfig = {
+    apiKey: "AIzaSyDF8cSrZfpYxnTww9M7uYR95-fUl5zUE5s",
+    authDomain: "bookcase-e7218.firebaseapp.com",
+    databaseURL: "https://bookcase-e7218.firebaseio.com",
+    projectId: "bookcase-e7218",
+    storageBucket: "bookcase-e7218.appspot.com",
+    messagingSenderId: "961566583519",
+    appId: "1:961566583519:web:4982e5d8ad5018c947d76a",
+    measurementId: "G-1FL0JBLZ1C"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
