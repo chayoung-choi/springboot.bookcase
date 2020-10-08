@@ -34,3 +34,4 @@ out/
 .vscode/
 /gradle/
 /bin/
+/logs/

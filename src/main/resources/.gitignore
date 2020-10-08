@@ -1,2 +1,5 @@
 /application.properties
 /application.yaml
+/application-oauth.properties
+/logback-local.properties
+/logback-spring.xml

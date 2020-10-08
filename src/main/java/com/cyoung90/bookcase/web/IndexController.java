@@ -9,11 +9,14 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @Controller
 public class IndexController {
-	
+
 	@GetMapping("/")
 	public String main(Model model) {
 		return "index";
 	}
-	
 
+	@GetMapping("/posts/save")
+	public String postsSave() {
+		return "posts-save";
+	}
 }
