@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
-@Entity(name = "TB2_USER")
+@Entity
 public class User extends BaseTimeEntity {
 
 	@Id

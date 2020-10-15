@@ -8,6 +8,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import com.cyoung90.bookcase.domain.user.Role;
+
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
@@ -30,16 +32,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
            .headers().frameOptions().disable() 
            .and()
                .authorizeRequests()
-               .antMatchers("/", "/login", "/sample/**").permitAll()
-               .antMatchers("/api/v1/**").hasAnyAuthority("ROLE_USER","ROLE_ADMIN")
-//               .antMatchers("/api/v1/**").hasRole().
+               .antMatchers("/", "/login", "/sample/**", "/h2-console/**").permitAll()
+//               .antMatchers("/api/v1/**").hasAnyAuthority("ROLE_USER","ROLE_ADMIN")
+               .antMatchers("/api/v1/**").hasRole(Role.USER.name())
                .anyRequest().authenticated()
            .and()
                .logout()
                    .logoutSuccessUrl("/")
            .and()
                .oauth2Login()
-               .loginPage("/login")
+//               .loginPage("/login")
                    .userInfoEndpoint()	// OAuth 2 로그인 성공 이후 사용자 정보를 가져올 때의 설정들을 담당
                        .userService(customOAuth2UserService);	// 소셜 로그인 성공 시 후속 조치를 진행할 UserService 인터페이스의 구현체를 등록합니다.
    }
